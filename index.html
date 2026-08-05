@@ -28,10 +28,153 @@
             background: #0a150a;
             min-height: 100vh;
             color: #d4e8d4;
+            overflow-x: hidden;
         }
 
         /* ============================================================
-                   НАВИГАЦИЯ
+                   ПРИВЕТСТВЕННАЯ ШАПКА (СПЛЭШ)
+                   ============================================================ */
+        .splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 99999;
+            background: linear-gradient(145deg, #0a150a, #1a2a1a);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            cursor: pointer;
+            padding: 30px;
+        }
+
+        .splash.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.05);
+        }
+
+        .splash .splash-logo {
+            font-size: 80px;
+            display: block;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        .splash h1 {
+            font-size: 52px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #8bc34a, #b44dff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 0 80px rgba(180, 77, 255, 0.15);
+        }
+
+        .splash .splash-sub {
+            font-size: 20px;
+            color: #8aaa8a;
+            margin-bottom: 40px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .splash .splash-btn {
+            display: inline-block;
+            padding: 16px 48px;
+            border: 2px solid #b44dff;
+            border-radius: 60px;
+            color: #d4b8ff;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(180, 77, 255, 0.08);
+            animation: bounceArrow 2s infinite;
+            letter-spacing: 1px;
+        }
+
+        .splash .splash-btn:hover {
+            background: rgba(180, 77, 255, 0.12);
+            border-color: #ffd700;
+            color: #ffd700;
+            box-shadow: 0 0 60px rgba(180, 77, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        @keyframes bounceArrow {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .splash .splash-scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            color: #4a6a4a;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: fadeInUp 2s infinite;
+            letter-spacing: 1px;
+        }
+
+        .splash .splash-scroll-hint .arrow-down {
+            font-size: 30px;
+            display: block;
+            animation: bounceArrow 1.5s infinite;
+        }
+
+        @keyframes fadeInUp {
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: translateY(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-5px);
+            }
+        }
+
+        /* ============================================================
+                   ОСНОВНОЙ САЙТ (появляется после скролла)
+                   ============================================================ */
+        .main-site {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            padding-top: 20px;
+        }
+
+        .main-site.visible {
+            opacity: 1;
+        }
+
+        /* ============================================================
+                   ОСТАЛЬНЫЕ СТИЛИ — ТЕ ЖЕ, ЧТО БЫЛИ
                    ============================================================ */
         .navbar {
             background: linear-gradient(145deg, #0f1a0f, #162216);
@@ -39,7 +182,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #2d4a2d;
+            border-bottom: 2px solid #b44dff;
+            box-shadow: 0 0 25px rgba(180, 77, 255, 0.15);
             position: sticky;
             top: 0;
             z-index: 999;
@@ -54,12 +198,13 @@
             gap: 12px;
             font-size: 22px;
             font-weight: 800;
-            background: linear-gradient(135deg, #8bc34a, #ffd700);
+            background: linear-gradient(135deg, #8bc34a, #b44dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
             cursor: pointer;
+            text-shadow: 0 0 40px rgba(180, 77, 255, 0.2);
         }
 
         .navbar .logo span {
@@ -75,8 +220,8 @@
 
         .navbar .nav-links button {
             background: transparent;
-            border: 2px solid #2d4a2d;
-            color: #b8d8b8;
+            border: 2px solid #b44dff;
+            color: #d4b8ff;
             padding: 8px 22px;
             border-radius: 30px;
             font-family: 'Montserrat', sans-serif;
@@ -84,24 +229,23 @@
             font-size: 14px;
             cursor: pointer;
             transition: all 0.25s ease;
+            box-shadow: 0 0 15px rgba(180, 77, 255, 0.08);
         }
 
         .navbar .nav-links button:hover {
             border-color: #ffd700;
             color: #ffd700;
-            background: rgba(255, 215, 0, 0.06);
+            background: rgba(180, 77, 255, 0.12);
+            box-shadow: 0 0 30px rgba(180, 77, 255, 0.25);
         }
 
         .navbar .nav-links button.active {
             border-color: #ffd700;
-            background: rgba(255, 215, 0, 0.12);
+            background: rgba(180, 77, 255, 0.18);
             color: #ffd700;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.05);
+            box-shadow: 0 0 40px rgba(180, 77, 255, 0.3);
         }
 
-        /* ============================================================
-                   СТРАНИЦЫ
-                   ============================================================ */
         .page {
             display: none;
             max-width: 1300px;
@@ -125,9 +269,6 @@
             }
         }
 
-        /* ============================================================
-                   ЗАГОЛОВКИ
-                   ============================================================ */
         .main-header {
             text-align: center;
             margin-bottom: 35px;
@@ -136,11 +277,12 @@
         .main-header h1 {
             font-size: 40px;
             font-weight: 900;
-            background: linear-gradient(135deg, #8bc34a, #cddc39, #ffd700);
+            background: linear-gradient(135deg, #8bc34a, #b44dff, #ffd700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: 1px;
+            text-shadow: 0 0 60px rgba(180, 77, 255, 0.15);
         }
 
         .main-header p {
@@ -148,6 +290,7 @@
             font-size: 17px;
             margin-top: 6px;
             font-weight: 400;
+            text-shadow: 0 0 20px rgba(180, 77, 255, 0.05);
         }
 
         .section-title {
@@ -157,20 +300,20 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 20px;
+            color: #d4b8ff;
+            text-shadow: 0 0 30px rgba(180, 77, 255, 0.1);
         }
 
         .section-title span {
             font-size: 30px;
         }
 
-        /* ============================================================
-                   ВИКТОРИНА
-                   ============================================================ */
         .quiz-section {
             background: linear-gradient(145deg, #162216, #1a2a1a);
             border-radius: 30px;
             padding: 30px 35px 35px;
-            border: 1px solid #2d4a2d;
+            border: 2px solid #b44dff;
+            box-shadow: 0 0 30px rgba(180, 77, 255, 0.08), inset 0 0 30px rgba(180, 77, 255, 0.03);
             margin-bottom: 35px;
         }
 
@@ -203,9 +346,10 @@
         }
 
         .quiz-options button:hover:not(:disabled) {
-            border-color: #8bc34a;
-            background: rgba(139, 195, 74, 0.08);
+            border-color: #b44dff;
+            background: rgba(180, 77, 255, 0.08);
             transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(180, 77, 255, 0.15);
         }
 
         .quiz-options button:active:not(:disabled) {
@@ -216,6 +360,7 @@
             border-color: #7bed9f;
             background: rgba(123, 237, 159, 0.18);
             color: #7bed9f;
+            box-shadow: 0 0 30px rgba(123, 237, 159, 0.1);
         }
 
         .quiz-options button.wrong {
@@ -238,7 +383,7 @@
             align-items: center;
             gap: 14px;
             flex-wrap: wrap;
-            border: 1px solid #1e3a1e;
+            border: 1px solid #2d4a2d;
             font-size: 15px;
         }
 
@@ -274,14 +419,12 @@
             color: #d4e8d4;
         }
 
-        /* ============================================================
-                   ГОРОДА (КАРТОЧКИ)
-                   ============================================================ */
         .city-section {
             background: linear-gradient(145deg, #162216, #1a2a1a);
             border-radius: 30px;
             padding: 25px 30px 30px;
-            border: 1px solid #2d4a2d;
+            border: 2px solid #b44dff;
+            box-shadow: 0 0 30px rgba(180, 77, 255, 0.08), inset 0 0 30px rgba(180, 77, 255, 0.03);
             margin-bottom: 30px;
         }
 
@@ -293,7 +436,7 @@
 
         .city-card {
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid #2d4a2d;
+            border: 2px solid #2d4a2d;
             border-radius: 18px;
             overflow: hidden;
             cursor: pointer;
@@ -301,9 +444,9 @@
         }
 
         .city-card:hover {
-            border-color: #ffd700;
+            border-color: #b44dff;
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 40px rgba(180, 77, 255, 0.2), 0 0 60px rgba(180, 77, 255, 0.05);
         }
 
         .city-card .city-image {
@@ -328,9 +471,8 @@
             transform: scale(1.05);
         }
 
-        /* ===== ЕСЛИ ФОТО НЕТ — ПОКАЗЫВАЕМ КРУТУЮ ЗАГЛУШКУ ===== */
         .city-card .city-image .no-image {
-            color: #ff6b6b;
+            color: #d4b8ff;
             font-size: 16px;
             font-weight: 700;
             text-align: center;
@@ -378,16 +520,56 @@
         .city-card.capital {
             border-color: #ffd700;
             background: rgba(255, 215, 0, 0.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.05);
         }
 
         .city-card.capital .city-name {
             color: #ffd700;
         }
 
-        /* ============================================================
-                   МОДАЛКА
-                   ============================================================ */
-        .modal-overlay {
+        .facts-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .fact-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid #2d4a2d;
+            border-radius: 20px;
+            padding: 20px 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fact-card:hover {
+            border-color: #b44dff;
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(180, 77, 255, 0.15), 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .fact-card .fact-emoji {
+            font-size: 30px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .fact-card .fact-number {
+            font-size: 24px;
+            font-weight: 800;
+            color: #d4b8ff;
+            text-shadow: 0 0 30px rgba(180, 77, 255, 0.1);
+        }
+
+        .fact-card .fact-label {
+            font-size: 13px;
+            color: #8aaa8a;
+            margin-top: 4px;
+        }
+
+        .fact-modal-overlay {
             display: none;
             position: fixed;
             top: 0;
@@ -397,6 +579,85 @@
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(12px);
             z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .fact-modal-overlay.active {
+            display: flex;
+        }
+
+        .fact-modal-content {
+            background: #1a2a1a;
+            border-radius: 30px;
+            max-width: 600px;
+            width: 90%;
+            padding: 35px 40px 40px;
+            border: 2px solid #b44dff;
+            box-shadow: 0 0 60px rgba(180, 77, 255, 0.15);
+            animation: slideUp 0.3s ease;
+            text-align: center;
+        }
+
+        .fact-modal-content .fact-modal-emoji {
+            font-size: 72px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .fact-modal-content h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #ffd700;
+            margin-bottom: 8px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .fact-modal-content .fact-modal-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: #d4b8ff;
+            text-shadow: 0 0 40px rgba(180, 77, 255, 0.2);
+            margin: 6px 0 12px;
+        }
+
+        .fact-modal-content .fact-modal-desc {
+            font-size: 16px;
+            color: #c8e0c8;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .fact-modal-content .fact-modal-close {
+            background: #ffd700;
+            color: #1a2a1a;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 4px 0 #b89a2a;
+        }
+
+        .fact-modal-content .fact-modal-close:active {
+            transform: translateY(4px);
+            box-shadow: 0 0px 0 #b89a2a;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 9998;
             justify-content: center;
             align-items: center;
             animation: fadeIn 0.3s ease;
@@ -413,7 +674,8 @@
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
-            border: 2px solid #2d4a2d;
+            border: 2px solid #b44dff;
+            box-shadow: 0 0 60px rgba(180, 77, 255, 0.15);
             padding: 0;
             animation: slideUp 0.3s ease;
         }
@@ -447,7 +709,7 @@
         }
 
         .modal-content .modal-image .no-image {
-            color: #ff6b6b;
+            color: #d4b8ff;
             font-size: 20px;
             font-weight: 700;
             text-align: center;
@@ -476,6 +738,7 @@
             font-weight: 800;
             color: #ffd700;
             margin-bottom: 6px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
         }
 
         .modal-content .modal-body .modal-sub {
@@ -499,6 +762,7 @@
             font-size: 12px;
             font-weight: 700;
             margin-bottom: 12px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.05);
         }
 
         .modal-content .modal-body .modal-close {
@@ -521,56 +785,12 @@
             box-shadow: 0 0px 0 #b89a2a;
         }
 
-        /* ============================================================
-                   ФАКТЫ
-                   ============================================================ */
-        .facts-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-top: 30px;
-        }
-
-        .fact-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid #1e3a1e;
-            border-radius: 20px;
-            padding: 20px 18px;
-            text-align: center;
-            transition: 0.2s;
-        }
-
-        .fact-card:hover {
-            border-color: #2d4a2d;
-            transform: translateY(-2px);
-        }
-
-        .fact-card .fact-emoji {
-            font-size: 30px;
-            display: block;
-            margin-bottom: 6px;
-        }
-
-        .fact-card .fact-number {
-            font-size: 24px;
-            font-weight: 800;
-            color: #ffd700;
-        }
-
-        .fact-card .fact-label {
-            font-size: 13px;
-            color: #8aaa8a;
-            margin-top: 4px;
-        }
-
-        /* ============================================================
-                   КАРТА
-                   ============================================================ */
         #map-page .map-wrapper {
             background: #162216;
             border-radius: 30px;
             padding: 18px;
-            border: 1px solid #2d4a2d;
+            border: 2px solid #b44dff;
+            box-shadow: 0 0 40px rgba(180, 77, 255, 0.08), inset 0 0 40px rgba(180, 77, 255, 0.02);
         }
 
         #map {
@@ -630,13 +850,10 @@
             border-radius: 0;
         }
 
-        /* ============================================================
-                   ФУТЕР
-                   ============================================================ */
         .footer-site {
             text-align: center;
             padding: 25px 20px 15px;
-            border-top: 1px solid #1a2a1a;
+            border-top: 1px solid #2d4a2d;
             color: #4a6a4a;
             font-size: 13px;
             max-width: 1300px;
@@ -647,9 +864,6 @@
             color: #6a8a6a;
         }
 
-        /* ============================================================
-                   LEAFLET КАСТОМ
-                   ============================================================ */
         .leaflet-popup-content {
             font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif !important;
             font-size: 14px !important;
@@ -695,9 +909,6 @@
             background: white !important;
         }
 
-        /* ============================================================
-                   КАСТОМНЫЕ МАРКЕРЫ
-                   ============================================================ */
         .my-marker {
             background: none !important;
             border: none !important;
@@ -718,20 +929,17 @@
             font-size: 28px !important;
         }
 
-        /* ============================================================
-                   КОМПАС
-                   ============================================================ */
         .compass-container {
             background: rgba(10, 25, 10, 0.88);
             backdrop-filter: blur(8px);
-            border: 2px solid #3a6a3a;
+            border: 2px solid #b44dff;
             border-radius: 50%;
             width: 60px;
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 8px 30px rgba(180, 77, 255, 0.15);
             position: relative;
             transition: 0.3s;
         }
@@ -739,6 +947,7 @@
         .compass-container:hover {
             border-color: #ffd700;
             transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(180, 77, 255, 0.25);
         }
 
         .compass-container .n {
@@ -790,9 +999,6 @@
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
         }
 
-        /* ============================================================
-                   АДАПТИВ
-                   ============================================================ */
         @media (max-width: 768px) {
             .navbar {
                 padding: 10px 16px;
@@ -807,22 +1013,18 @@
                 padding: 6px 14px;
                 font-size: 12px;
             }
-
             .page {
                 padding: 16px 12px 30px;
             }
-
             .main-header h1 {
                 font-size: 28px;
             }
             .main-header p {
                 font-size: 14px;
             }
-
             .section-title {
                 font-size: 20px;
             }
-
             .quiz-section {
                 padding: 20px 18px 24px;
             }
@@ -833,27 +1035,22 @@
                 padding: 10px 18px;
                 font-size: 13px;
             }
-
             .city-grid {
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             }
-
             .city-card .city-image {
                 height: 120px;
             }
-
             #map {
                 height: 460px;
             }
-
             .facts-section {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 gap: 12px;
             }
             .fact-card .fact-number {
                 font-size: 20px;
             }
-
             .map-legend {
                 gap: 10px 18px;
                 font-size: 11px;
@@ -862,7 +1059,6 @@
             .map-legend .item {
                 font-size: 11px;
             }
-
             .modal-content .modal-image {
                 height: 220px;
             }
@@ -871,6 +1067,31 @@
             }
             .modal-content .modal-body h2 {
                 font-size: 22px;
+            }
+            .fact-modal-content {
+                padding: 25px 20px 30px;
+            }
+            .fact-modal-content .fact-modal-emoji {
+                font-size: 56px;
+            }
+            .fact-modal-content h2 {
+                font-size: 26px;
+            }
+            .fact-modal-content .fact-modal-number {
+                font-size: 36px;
+            }
+            .splash h1 {
+                font-size: 36px;
+            }
+            .splash .splash-logo {
+                font-size: 60px;
+            }
+            .splash .splash-sub {
+                font-size: 16px;
+            }
+            .splash .splash-btn {
+                padding: 14px 30px;
+                font-size: 16px;
             }
         }
 
@@ -882,22 +1103,18 @@
                 padding: 5px 12px;
                 font-size: 11px;
             }
-
             .main-header h1 {
                 font-size: 22px;
             }
-
             .quiz-options button {
                 padding: 8px 14px;
                 font-size: 12px;
                 width: 100%;
             }
-
             .city-grid {
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
                 gap: 10px;
             }
-
             .city-card .city-image {
                 height: 100px;
             }
@@ -907,11 +1124,9 @@
             .city-card .city-name {
                 font-size: 14px;
             }
-
             #map {
                 height: 340px;
             }
-
             .quiz-feedback {
                 font-size: 13px;
                 padding: 12px 14px;
@@ -920,7 +1135,6 @@
                 font-size: 12px;
                 padding: 6px 18px;
             }
-
             .modal-content .modal-image {
                 height: 170px;
             }
@@ -930,122 +1144,180 @@
             .modal-content .modal-body p {
                 font-size: 14px;
             }
+            .fact-modal-content {
+                padding: 20px 16px 24px;
+            }
+            .fact-modal-content .fact-modal-emoji {
+                font-size: 44px;
+            }
+            .fact-modal-content h2 {
+                font-size: 22px;
+            }
+            .fact-modal-content .fact-modal-number {
+                font-size: 30px;
+            }
+            .fact-modal-content .fact-modal-desc {
+                font-size: 14px;
+            }
+            .splash h1 {
+                font-size: 28px;
+            }
+            .splash .splash-logo {
+                font-size: 48px;
+            }
+            .splash .splash-sub {
+                font-size: 14px;
+            }
+            .splash .splash-btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+            .splash .splash-scroll-hint {
+                font-size: 12px;
+                bottom: 25px;
+            }
         }
     </style>
 </head>
 <body>
 
     <!-- ============================================================
-    НАВИГАЦИЯ
+    ПРИВЕТСТВЕННАЯ ШАПКА (СПЛЭШ)
     ============================================================ -->
-    <nav class="navbar">
-        <a href="#" class="logo" onclick="switchPage('main')">
-            <span>🏛️</span> Липецкая область
-        </a>
-        <div class="nav-links">
-            <button class="active" id="navMain" onclick="switchPage('main')">🏠 Главная</button>
-            <button id="navMap" onclick="switchPage('map')">🗺️ Карта</button>
-        </div>
-    </nav>
-
-    <!-- ============================================================
-    ГЛАВНАЯ СТРАНИЦА
-    ============================================================ -->
-    <div class="page active" id="main-page">
-        <div class="main-header">
-            <h1>🏛️ Добро пожаловать в Липецкую область!</h1>
-            <p>интерактивный гид по сердцу Черноземья 🌾</p>
-        </div>
-
-        <!-- ВИКТОРИНА -->
-        <div class="quiz-section">
-            <div class="section-title"><span>🧠</span> Викторина «Знаешь ли ты область?»</div>
-            <div class="quiz-question" id="quizQuestion">Загрузка вопроса...</div>
-            <div class="quiz-options" id="quizOptions"></div>
-            <div class="quiz-feedback" id="quizFeedback">
-                <span>💡 Нажми на вариант ответа</span>
-            </div>
-            <div class="quiz-score" id="quizScore">✅ правильно: <strong>0</strong> &nbsp;|&nbsp; ❌ неправильно: <strong>0</strong></div>
-        </div>
-
-        <!-- ГОРОДА -->
-        <div class="city-section">
-            <div class="section-title"><span>🏙️</span> Города Липецкой области</div>
-            <div class="city-grid" id="cityGrid"></div>
-        </div>
-
-        <!-- ФАКТЫ -->
-        <div class="facts-section">
-            <div class="fact-card">
-                <span class="fact-emoji">🏛️</span>
-                <div class="fact-number">18</div>
-                <div class="fact-label">городов и райцентров</div>
-            </div>
-            <div class="fact-card">
-                <span class="fact-emoji">📅</span>
-                <div class="fact-number">1703</div>
-                <div class="fact-label">год основания Липецка</div>
-            </div>
-            <div class="fact-card">
-                <span class="fact-emoji">🌊</span>
-                <div class="fact-number">2</div>
-                <div class="fact-label">крупные реки: Дон и Воронеж</div>
-            </div>
-            <div class="fact-card">
-                <span class="fact-emoji">🌾</span>
-                <div class="fact-number">~200</div>
-                <div class="fact-label">км с севера на юг</div>
-            </div>
-            <div class="fact-card">
-                <span class="fact-emoji">⛪</span>
-                <div class="fact-number">1146</div>
-                <div class="fact-label">год первого упоминания Ельца</div>
-            </div>
-            <div class="fact-card">
-                <span class="fact-emoji">🏭</span>
-                <div class="fact-number">17</div>
-                <div class="fact-label">муниципальных районов</div>
-            </div>
+    <div class="splash" id="splash">
+        <span class="splash-logo">🏛️</span>
+        <h1>Липецкая область</h1>
+        <p class="splash-sub">интерактивный гид по сердцу Черноземья 🌾</p>
+        <button class="splash-btn" id="splashBtn">⬇ ЛИСТАЙ ДАЛЬШЕ ⬇</button>
+        <div class="splash-scroll-hint">
+            <span>пролистай вниз</span>
+            <span class="arrow-down">⬇</span>
         </div>
     </div>
 
     <!-- ============================================================
-    СТРАНИЦА КАРТЫ
+    ОСНОВНОЙ САЙТ
     ============================================================ -->
-    <div class="page" id="map-page">
-        <div class="main-header">
-            <h1>🗺️ Интерактивная карта</h1>
-            <p>реальные границы · наведи на район — узнай подробности</p>
-        </div>
+    <div class="main-site" id="mainSite">
 
-        <div class="map-wrapper">
-            <div id="map"></div>
-            <div class="map-legend">
-                <span class="item"><span class="box" style="background:#2d6a2d;"></span> районы</span>
-                <span class="item"><span class="box circle" style="background:#ffd700; border-color:#ffd700;"></span> столица ⭐</span>
-                <span class="item"><span class="box circle" style="background:#ff6b6b; border-color:#ff6b6b;"></span> города 📍</span>
-                <span class="item"><span class="box border-red"></span> граница области</span>
-                <span class="item"><span class="box dashed"></span> соседние регионы</span>
-                <span class="item"><span class="box" style="background:#4a8aaa;"></span> реки</span>
+        <!-- ============================================================
+        НАВИГАЦИЯ
+        ============================================================ -->
+        <nav class="navbar">
+            <a href="#" class="logo" onclick="switchPage('main')">
+                <span>🏛️</span> Липецкая область
+            </a>
+            <div class="nav-links">
+                <button class="active" id="navMain" onclick="switchPage('main')">🏠 Главная</button>
+                <button id="navMap" onclick="switchPage('map')">🗺️ Карта</button>
+            </div>
+        </nav>
+
+        <!-- ============================================================
+        ГЛАВНАЯ СТРАНИЦА
+        ============================================================ -->
+        <div class="page active" id="main-page">
+            <div class="main-header">
+                <h1>🏛️ Добро пожаловать в Липецкую область!</h1>
+                <p>интерактивный гид по сердцу Черноземья 🌾</p>
+            </div>
+
+            <!-- ВИКТОРИНА -->
+            <div class="quiz-section">
+                <div class="section-title"><span>🧠</span> Викторина «Знаешь ли ты область?»</div>
+                <div class="quiz-question" id="quizQuestion">Загрузка вопроса...</div>
+                <div class="quiz-options" id="quizOptions"></div>
+                <div class="quiz-feedback" id="quizFeedback">
+                    <span>💡 Нажми на вариант ответа</span>
+                </div>
+                <div class="quiz-score" id="quizScore">✅ правильно: <strong>0</strong> &nbsp;|&nbsp; ❌ неправильно: <strong>0</strong></div>
+            </div>
+
+            <!-- ГОРОДА -->
+            <div class="city-section">
+                <div class="section-title"><span>🏙️</span> Города Липецкой области</div>
+                <div class="city-grid" id="cityGrid"></div>
+            </div>
+
+            <!-- ФАКТЫ -->
+            <div class="facts-section">
+                <div class="fact-card" onclick="openFactModal('🏛️', '18', 'городов и райцентров', 'В Липецкой области 18 городов и районных центров. Среди них — древний Елец (1146 год), промышленный Липецк и уютные малые города с богатой историей. Каждый из них — часть большой Липецкой семьи!')">
+                    <span class="fact-emoji">🏛️</span>
+                    <div class="fact-number">18</div>
+                    <div class="fact-label">городов и райцентров</div>
+                </div>
+
+                <div class="fact-card" onclick="openFactModal('📅', '1703', 'год основания Липецка', 'Липецк был основан в 1703 году по указу Петра I как металлургический завод. И да, он ровесник Санкт-Петербурга! Оба города появились в один год — 1703-й.')">
+                    <span class="fact-emoji">📅</span>
+                    <div class="fact-number">1703</div>
+                    <div class="fact-label">год основания Липецка</div>
+                </div>
+
+                <div class="fact-card" onclick="openFactModal('🌊', '2', 'крупные реки: Дон и Воронеж', 'Дон и Воронеж — главные водные артерии Липецкой области. Дон — одна из крупнейших рек России. Воронеж — левый приток Дона, на котором стоит Липецк. Обе реки дают жизнь региону.')">
+                    <span class="fact-emoji">🌊</span>
+                    <div class="fact-number">2</div>
+                    <div class="fact-label">крупные реки: Дон и Воронеж</div>
+                </div>
+
+                <div class="fact-card" onclick="openFactModal('🌾', '~200', 'км с севера на юг', 'Липецкая область вытянулась с севера на юг примерно на 200 километров. На таком расстоянии можно успеть послушать несколько подкастов, если ехать на машине. Или просто полюбоваться на бескрайние поля Черноземья!')">
+                    <span class="fact-emoji">🌾</span>
+                    <div class="fact-number">~200</div>
+                    <div class="fact-label">км с севера на юг</div>
+                </div>
+
+                <div class="fact-card" onclick="openFactModal('⛪', '1146', 'год первого упоминания Ельца', 'Елец впервые упоминается в летописях в 1146 году. Это один из древнейших городов России, старше Москвы! Город-воин, город-труженик, город с великой историей.')">
+                    <span class="fact-emoji">⛪</span>
+                    <div class="fact-number">1146</div>
+                    <div class="fact-label">год первого упоминания Ельца</div>
+                </div>
+
+                <div class="fact-card" onclick="openFactModal('🏭', '18', 'муниципальных районов', 'В Липецкой области 18 муниципальных районов. От Добровского до Тербунского — у каждого свой характер, свои традиции и свои герои. Все они вместе создают неповторимый облик нашей области.')">
+                    <span class="fact-emoji">🏭</span>
+                    <div class="fact-number">18</div>
+                    <div class="fact-label">муниципальных районов</div>
+                </div>
             </div>
         </div>
 
-        <div style="text-align:center; margin-top:18px; color:#6a8a6a; font-size:13px;">
-            🔄 наведи на район — подсветится · кликни для подробностей
+        <!-- ============================================================
+        СТРАНИЦА КАРТЫ
+        ============================================================ -->
+        <div class="page" id="map-page">
+            <div class="main-header">
+                <h1>🗺️ Интерактивная карта</h1>
+                <p>реальные границы · наведи на район — узнай подробности</p>
+            </div>
+
+            <div class="map-wrapper">
+                <div id="map"></div>
+                <div class="map-legend">
+                    <span class="item"><span class="box" style="background:#2d6a2d;"></span> районы</span>
+                    <span class="item"><span class="box circle" style="background:#ffd700; border-color:#ffd700;"></span> столица ⭐</span>
+                    <span class="item"><span class="box circle" style="background:#ff6b6b; border-color:#ff6b6b;"></span> города 📍</span>
+                    <span class="item"><span class="box border-red"></span> граница области</span>
+                    <span class="item"><span class="box dashed"></span> соседние регионы</span>
+                    <span class="item"><span class="box" style="background:#4a8aaa;"></span> реки</span>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:18px; color:#6a8a6a; font-size:13px;">
+                🔄 наведи на район — подсветится · кликни для подробностей
+            </div>
         </div>
-    </div>
+
+        <!-- ============================================================
+        ФУТЕР
+        ============================================================ -->
+        <div class="footer-site">
+            <span>🌾 интерактивный гид по Липецкой области · 2026</span>
+            <br>
+            <span style="font-size:11px; color:#4a6a4a;">данные с OpenStreetMap · сделано с ❤️</span>
+        </div>
+
+    </div> <!-- /main-site -->
 
     <!-- ============================================================
-    ФУТЕР
-    ============================================================ -->
-    <div class="footer-site">
-        <span>🌾 интерактивный гид по Липецкой области · 2026</span>
-        <br>
-        <span style="font-size:11px; color:#4a6a4a;">данные с OpenStreetMap · сделано с ❤️</span>
-    </div>
-
-    <!-- ============================================================
-    МОДАЛКА
+    МОДАЛКА ДЛЯ ГОРОДОВ
     ============================================================ -->
     <div class="modal-overlay" id="cityModal">
         <div class="modal-content">
@@ -1061,9 +1333,62 @@
     </div>
 
     <!-- ============================================================
+    МОДАЛКА ДЛЯ ФАКТОВ
+    ============================================================ -->
+    <div class="fact-modal-overlay" id="factModal">
+        <div class="fact-modal-content">
+            <span class="fact-modal-emoji" id="factModalEmoji">🏛️</span>
+            <h2 id="factModalTitle">Заголовок</h2>
+            <div class="fact-modal-number" id="factModalNumber">18</div>
+            <div class="fact-modal-desc" id="factModalDesc">Описание</div>
+            <button class="fact-modal-close" onclick="closeFactModal()">✕ Закрыть</button>
+        </div>
+    </div>
+
+    <!-- ============================================================
     СКРИПТ
     ============================================================ -->
     <script>
+        // ============================================================
+        //  0. ПРИВЕТСТВЕННАЯ ШАПКА
+        // ============================================================
+        const splash = document.getElementById('splash');
+        const mainSite = document.getElementById('mainSite');
+        const splashBtn = document.getElementById('splashBtn');
+
+        function hideSplash() {
+            splash.classList.add('hidden');
+            mainSite.classList.add('visible');
+            document.body.style.overflow = 'auto';
+        }
+
+        // По клику на кнопку
+        splashBtn.addEventListener('click', hideSplash);
+
+        // По клику на фон (любое место на сплэше)
+        splash.addEventListener('click', function(e) {
+            if (e.target === this || e.target.closest('.splash-scroll-hint')) {
+                hideSplash();
+            }
+        });
+
+        // По скроллу (если пользователь прокрутит)
+        window.addEventListener('wheel', function(e) {
+            if (e.deltaY > 10 && !splash.classList.contains('hidden')) {
+                hideSplash();
+            }
+        }, { passive: true });
+
+        // По тачу (для телефонов)
+        window.addEventListener('touchmove', function(e) {
+            if (!splash.classList.contains('hidden')) {
+                hideSplash();
+            }
+        }, { passive: true });
+
+        // Блокируем скролл пока не скрыли сплэш
+        document.body.style.overflow = 'hidden';
+
         // ============================================================
         //  1. ПЕРЕКЛЮЧЕНИЕ СТРАНИЦ
         // ============================================================
@@ -1160,7 +1485,7 @@
         }
 
         // ============================================================
-        //  3. ГОРОДА — С ФОТО!
+        //  3. ГОРОДА
         // ============================================================
         const CITIES = [
             { name: 'Липецк', emoji: '⭐', desc: 'столица', capital: true, img: 'images/lipetsk.jpg', fullDesc: 'Административный центр Липецкой области. Крупный промышленный город. Основан в 1703 году.' },
@@ -1191,7 +1516,6 @@
                 const card = document.createElement('div');
                 card.className = 'city-card' + (city.capital ? ' capital' : '');
 
-                // Пытаемся загрузить фото
                 const imgSrc = city.img;
                 const imgHtml = `
                             <img src="${imgSrc}" alt="${city.name}" 
@@ -1214,7 +1538,7 @@
         }
 
         // ============================================================
-        //  4. МОДАЛКА
+        //  4. МОДАЛКА ДЛЯ ГОРОДОВ
         // ============================================================
         function openModal(city) {
             document.getElementById('modalBadge').textContent = city.capital ? '⭐ СТОЛИЦА' : '🏙️ ГОРОД';
@@ -1243,7 +1567,27 @@
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
         // ============================================================
-        //  5. КАРТА
+        //  5. МОДАЛКА ДЛЯ ФАКТОВ
+        // ============================================================
+        function openFactModal(emoji, number, label, description) {
+            document.getElementById('factModalEmoji').textContent = emoji;
+            document.getElementById('factModalTitle').textContent = label;
+            document.getElementById('factModalNumber').textContent = number;
+            document.getElementById('factModalDesc').textContent = description;
+            document.getElementById('factModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFactModal() {
+            document.getElementById('factModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('factModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeFactModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFactModal(); });
+
+        // ============================================================
+        //  6. КАРТА
         // ============================================================
         let mapInitialized = false;
 
@@ -1485,7 +1829,7 @@
         }
 
         // ============================================================
-        //  6. ЗАПУСК
+        //  7. ЗАПУСК
         // ============================================================
         renderCities();
         loadQuiz(0);
@@ -1502,7 +1846,12 @@
         }, 1000);
 
         console.log('🏛️ Сайт Липецкой области загружен!');
+        console.log('🟣 Неоновая фиолетовая обводка добавлена!');
+        console.log('📊 Карточки фактов кликабельные!');
+        console.log('✅ Липецк и Питер — ровесники (оба 1703)');
+        console.log('✅ Муниципальных районов — 18');
         console.log('📸 Фото городов загружаются из папки images/');
+        console.log('🎬 Приветственная шапка активна! Листай дальше!');
     </script>
 
 </body>
