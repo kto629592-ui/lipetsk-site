@@ -287,8 +287,8 @@
 
         .city-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
         }
 
         .city-card {
@@ -308,7 +308,7 @@
 
         .city-card .city-image {
             width: 100%;
-            height: 140px;
+            height: 160px;
             background: #1a2a1a;
             overflow: hidden;
             display: flex;
@@ -328,6 +328,7 @@
             transform: scale(1.05);
         }
 
+        /* ===== ЕСЛИ ФОТО НЕТ — ПОКАЗЫВАЕМ КРУТУЮ ЗАГЛУШКУ ===== */
         .city-card .city-image .no-image {
             color: #ff6b6b;
             font-size: 16px;
@@ -339,10 +340,18 @@
             align-items: center;
             justify-content: center;
             height: 100%;
+            width: 100%;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
         }
 
         .city-card .city-image .no-image span {
-            font-size: 40px;
+            font-size: 48px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .city-card .city-image .no-image .city-emoji-big {
+            font-size: 60px;
         }
 
         .city-card .city-info {
@@ -448,10 +457,14 @@
             align-items: center;
             justify-content: center;
             height: 100%;
+            width: 100%;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
         }
 
         .modal-content .modal-image .no-image span {
             font-size: 80px;
+            display: block;
+            margin-bottom: 10px;
         }
 
         .modal-content .modal-body {
@@ -822,11 +835,11 @@
             }
 
             .city-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             }
 
             .city-card .city-image {
-                height: 110px;
+                height: 120px;
             }
 
             #map {
@@ -881,12 +894,12 @@
             }
 
             .city-grid {
-                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
                 gap: 10px;
             }
 
             .city-card .city-image {
-                height: 90px;
+                height: 100px;
             }
             .city-card .city-info {
                 padding: 10px 12px 12px;
@@ -1067,7 +1080,7 @@
         }
 
         // ============================================================
-        //  2. ВИКТОРИНА — С ПРАВИЛЬНЫМИ ОТВЕТАМИ (СПАСИБО ФЕДЕ!)
+        //  2. ВИКТОРИНА
         // ============================================================
         const QUIZ = [
             { question: 'Какой город Липецкой области считается самым древним?', options: ['Липецк', 'Елец', 'Данков', 'Задонск'], correct: 1 },
@@ -1147,7 +1160,7 @@
         }
 
         // ============================================================
-        //  3. ГОРОДА (ДЛЯ ГЛАВНОЙ СТРАНИЦЫ)
+        //  3. ГОРОДА — С ФОТО!
         // ============================================================
         const CITIES = [
             { name: 'Липецк', emoji: '⭐', desc: 'столица', capital: true, img: 'images/lipetsk.jpg', fullDesc: 'Административный центр Липецкой области. Крупный промышленный город. Основан в 1703 году.' },
@@ -1177,16 +1190,24 @@
             CITIES.forEach(city => {
                 const card = document.createElement('div');
                 card.className = 'city-card' + (city.capital ? ' capital' : '');
+
+                // Пытаемся загрузить фото
+                const imgSrc = city.img;
+                const imgHtml = `
+                            <img src="${imgSrc}" alt="${city.name}" 
+                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'no-image\\'><span class=\\'city-emoji-big\\'>${city.emoji}</span>фото нет, но <br>я старался :)</div>';">
+                        `;
+
                 card.innerHTML = `
-                    <div class="city-image">
-                        <img src="${city.img}" alt="${city.name}" 
-                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'no-image\\'><span>🤷‍♂️</span>автор распиздяй,<br>поэтому фоток нет :)</div>';">
-                    </div>
-                    <div class="city-info">
-                        <div class="city-name"><span class="city-emoji">${city.emoji}</span>${city.name}</div>
-                        <div class="city-desc">${city.desc}</div>
-                    </div>
-                `;
+                            <div class="city-image">
+                                ${imgHtml}
+                            </div>
+                            <div class="city-info">
+                                <div class="city-name"><span class="city-emoji">${city.emoji}</span>${city.name}</div>
+                                <div class="city-desc">${city.desc}</div>
+                            </div>
+                        `;
+
                 card.addEventListener('click', () => openModal(city));
                 grid.appendChild(card);
             });
@@ -1202,10 +1223,12 @@
             document.getElementById('modalDesc').textContent = city.fullDesc;
 
             const imgContainer = document.getElementById('modalImage');
+            const imgSrc = city.img;
+
             imgContainer.innerHTML = `
-                <img src="${city.img}" alt="${city.name}" 
-                     onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'no-image\\'><span>🤷‍♂️</span>автор распиздяй,<br>поэтому фоток нет :)</div>';">
-            `;
+                        <img src="${imgSrc}" alt="${city.name}" 
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'no-image\\'><span>${city.emoji}</span>фото нет, но <br>я старался :)</div>';">
+                    `;
 
             document.getElementById('cityModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1243,15 +1266,15 @@
                 onAdd: () => {
                     const div = L.DomUtil.create('div');
                     div.innerHTML = `
-                        <div class="compass-container">
-                            <span class="n">N</span>
-                            <span class="s">S</span>
-                            <span class="w">W</span>
-                            <span class="e">E</span>
-                            <div class="line-v"></div>
-                            <div class="line-h"></div>
-                            <div class="center-dot"></div>
-                        </div>`;
+                                <div class="compass-container">
+                                    <span class="n">N</span>
+                                    <span class="s">S</span>
+                                    <span class="w">W</span>
+                                    <span class="e">E</span>
+                                    <div class="line-v"></div>
+                                    <div class="line-h"></div>
+                                    <div class="center-dot"></div>
+                                </div>`;
                     return div;
                 }
             }).addTo(map);
@@ -1293,10 +1316,10 @@
                 const marker = L.marker([c.lat, c.lng], { icon })
                     .addTo(map)
                     .bindPopup(`
-                        <strong>${c.capital ? '⭐ ' : ''}${c.name}</strong>
-                        <div class="popup-desc">${c.capital ? '🏛️ Административный центр области' : 'Город Липецкой области'}</div>
-                        <span class="popup-badge ${c.capital ? 'capital' : ''}">${c.capital ? '🏛️ СТОЛИЦА' : '🏙️ ГОРОД'}</span>
-                    `);
+                                <strong>${c.capital ? '⭐ ' : ''}${c.name}</strong>
+                                <div class="popup-desc">${c.capital ? '🏛️ Административный центр области' : 'Город Липецкой области'}</div>
+                                <span class="popup-badge ${c.capital ? 'capital' : ''}">${c.capital ? '🏛️ СТОЛИЦА' : '🏙️ ГОРОД'}</span>
+                            `);
 
                 marker.on('mouseover', function() {
                     this.openPopup();
@@ -1305,19 +1328,19 @@
                 // Подпись
                 const label = L.divIcon({
                     html: `<div style="
-                        color: #fff;
-                        font-size: ${c.capital ? '15px' : '12px'};
-                        font-weight: ${c.capital ? '800' : '600'};
-                        text-shadow: 0 0 15px rgba(0,0,0,0.95), 0 0 30px rgba(0,0,0,0.7);
-                        font-family: 'Montserrat', sans-serif;
-                        background: rgba(0,0,0,0.5);
-                        padding: 2px 12px;
-                        border-radius: 12px;
-                        border: 1px solid ${c.capital ? '#ffd700' : 'rgba(255,255,255,0.15)'};
-                        backdrop-filter: blur(4px);
-                        white-space: nowrap;
-                        margin-top: 5px;
-                    ">${c.name}</div>`,
+                                color: #fff;
+                                font-size: ${c.capital ? '15px' : '12px'};
+                                font-weight: ${c.capital ? '800' : '600'};
+                                text-shadow: 0 0 15px rgba(0,0,0,0.95), 0 0 30px rgba(0,0,0,0.7);
+                                font-family: 'Montserrat', sans-serif;
+                                background: rgba(0,0,0,0.5);
+                                padding: 2px 12px;
+                                border-radius: 12px;
+                                border: 1px solid ${c.capital ? '#ffd700' : 'rgba(255,255,255,0.15)'};
+                                backdrop-filter: blur(4px);
+                                white-space: nowrap;
+                                margin-top: 5px;
+                            ">${c.name}</div>`,
                     className: 'city-label',
                     iconSize: [0, 0],
                     iconAnchor: [0, 0],
@@ -1380,10 +1403,10 @@
                                 fillOpacity: 0.3,
                             }).addTo(map)
                                 .bindPopup(`
-                                    <strong>${d.name}</strong>
-                                    <div class="popup-desc">Муниципальный район</div>
-                                    <span class="popup-badge">📍 РАЙОН</span>
-                                `);
+                                            <strong>${d.name}</strong>
+                                            <div class="popup-desc">Муниципальный район</div>
+                                            <span class="popup-badge">📍 РАЙОН</span>
+                                        `);
                             poly.on('mouseover', function() {
                                 this.setStyle({ fillOpacity: 0.55, weight: 4, color: '#ffd700' });
                                 this.bringToFront();
@@ -1479,7 +1502,7 @@
         }, 1000);
 
         console.log('🏛️ Сайт Липецкой области загружен!');
-        console.log('✅ Викторина с правильными ответами (спасибо Феде!)');
+        console.log('📸 Фото городов загружаются из папки images/');
     </script>
 
 </body>
