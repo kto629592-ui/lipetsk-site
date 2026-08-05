@@ -14,17 +14,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
 
     <style>
+        /* ============================================================
+                   БАЗА
+                   ============================================================ */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
             background: #0a150a;
             min-height: 100vh;
             color: #d4e8d4;
         }
+
+        /* ============================================================
+                   НАВИГАЦИЯ
+                   ============================================================ */
         .navbar {
             background: linear-gradient(145deg, #0f1a0f, #162216);
             padding: 14px 30px;
@@ -39,6 +47,7 @@
             flex-wrap: wrap;
             gap: 12px;
         }
+
         .navbar .logo {
             display: flex;
             align-items: center;
@@ -52,15 +61,18 @@
             text-decoration: none;
             cursor: pointer;
         }
+
         .navbar .logo span {
             font-size: 30px;
             -webkit-text-fill-color: initial;
         }
+
         .navbar .nav-links {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
         }
+
         .navbar .nav-links button {
             background: transparent;
             border: 2px solid #2d4a2d;
@@ -73,17 +85,23 @@
             cursor: pointer;
             transition: all 0.25s ease;
         }
+
         .navbar .nav-links button:hover {
             border-color: #ffd700;
             color: #ffd700;
             background: rgba(255, 215, 0, 0.06);
         }
+
         .navbar .nav-links button.active {
             border-color: #ffd700;
             background: rgba(255, 215, 0, 0.12);
             color: #ffd700;
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.05);
         }
+
+        /* ============================================================
+                   СТРАНИЦЫ
+                   ============================================================ */
         .page {
             display: none;
             max-width: 1300px;
@@ -91,9 +109,11 @@
             padding: 30px 25px 40px;
             animation: fadeIn 0.5s ease;
         }
+
         .page.active {
             display: block;
         }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -104,10 +124,15 @@
                 transform: translateY(0);
             }
         }
+
+        /* ============================================================
+                   ЗАГОЛОВКИ
+                   ============================================================ */
         .main-header {
             text-align: center;
             margin-bottom: 35px;
         }
+
         .main-header h1 {
             font-size: 40px;
             font-weight: 900;
@@ -117,12 +142,14 @@
             background-clip: text;
             letter-spacing: 1px;
         }
+
         .main-header p {
             color: #8aaa8a;
             font-size: 17px;
             margin-top: 6px;
             font-weight: 400;
         }
+
         .section-title {
             font-size: 24px;
             font-weight: 700;
@@ -131,9 +158,14 @@
             gap: 12px;
             margin-bottom: 20px;
         }
+
         .section-title span {
             font-size: 30px;
         }
+
+        /* ============================================================
+                   ВИКТОРИНА
+                   ============================================================ */
         .quiz-section {
             background: linear-gradient(145deg, #162216, #1a2a1a);
             border-radius: 30px;
@@ -141,6 +173,7 @@
             border: 1px solid #2d4a2d;
             margin-bottom: 35px;
         }
+
         .quiz-question {
             font-size: 19px;
             font-weight: 600;
@@ -148,12 +181,14 @@
             margin-bottom: 16px;
             min-height: 50px;
         }
+
         .quiz-options {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
             margin-bottom: 16px;
         }
+
         .quiz-options button {
             background: rgba(255, 255, 255, 0.04);
             border: 2px solid #2d4a2d;
@@ -166,28 +201,34 @@
             cursor: pointer;
             transition: all 0.15s ease;
         }
+
         .quiz-options button:hover:not(:disabled) {
             border-color: #8bc34a;
             background: rgba(139, 195, 74, 0.08);
             transform: translateY(-2px);
         }
+
         .quiz-options button:active:not(:disabled) {
             transform: translateY(1px);
         }
+
         .quiz-options button.correct {
             border-color: #7bed9f;
             background: rgba(123, 237, 159, 0.18);
             color: #7bed9f;
         }
+
         .quiz-options button.wrong {
             border-color: #ff6b6b;
             background: rgba(255, 107, 107, 0.15);
             color: #ff6b6b;
         }
+
         .quiz-options button:disabled {
             cursor: default;
             opacity: 0.6;
         }
+
         .quiz-feedback {
             padding: 14px 20px;
             border-radius: 20px;
@@ -200,6 +241,7 @@
             border: 1px solid #1e3a1e;
             font-size: 15px;
         }
+
         .quiz-feedback .btn-next {
             margin-left: auto;
             background: #ffd700;
@@ -214,10 +256,12 @@
             transition: 0.15s;
             box-shadow: 0 4px 0 #b89a2a;
         }
+
         .quiz-feedback .btn-next:active {
             transform: translateY(4px);
             box-shadow: 0 0px 0 #b89a2a;
         }
+
         .quiz-score {
             margin-top: 14px;
             color: #8aaa8a;
@@ -225,9 +269,14 @@
             font-weight: 600;
             text-align: right;
         }
+
         .quiz-score strong {
             color: #d4e8d4;
         }
+
+        /* ============================================================
+                   ГОРОДА (КАРТОЧКИ)
+                   ============================================================ */
         .city-section {
             background: linear-gradient(145deg, #162216, #1a2a1a);
             border-radius: 30px;
@@ -235,11 +284,13 @@
             border: 1px solid #2d4a2d;
             margin-bottom: 30px;
         }
+
         .city-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 16px;
         }
+
         .city-card {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid #2d4a2d;
@@ -248,11 +299,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+
         .city-card:hover {
             border-color: #ffd700;
             transform: translateY(-5px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
         }
+
         .city-card .city-image {
             width: 100%;
             height: 140px;
@@ -263,15 +316,18 @@
             justify-content: center;
             position: relative;
         }
+
         .city-card .city-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: 0.3s;
         }
+
         .city-card:hover .city-image img {
             transform: scale(1.05);
         }
+
         .city-card .city-image .no-image {
             color: #ff6b6b;
             font-size: 16px;
@@ -284,33 +340,44 @@
             justify-content: center;
             height: 100%;
         }
+
         .city-card .city-image .no-image span {
             font-size: 40px;
         }
+
         .city-card .city-info {
             padding: 14px 16px 16px;
         }
+
         .city-card .city-name {
             font-weight: 700;
             font-size: 16px;
             color: #d4e8d4;
         }
+
         .city-card .city-desc {
             font-size: 12px;
             color: #7a9a7a;
             margin-top: 2px;
         }
+
         .city-card .city-emoji {
             font-size: 14px;
             margin-right: 6px;
         }
+
         .city-card.capital {
             border-color: #ffd700;
             background: rgba(255, 215, 0, 0.05);
         }
+
         .city-card.capital .city-name {
             color: #ffd700;
         }
+
+        /* ============================================================
+                   МОДАЛКА
+                   ============================================================ */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -325,9 +392,11 @@
             align-items: center;
             animation: fadeIn 0.3s ease;
         }
+
         .modal-overlay.active {
             display: flex;
         }
+
         .modal-content {
             background: #1a2a1a;
             border-radius: 30px;
@@ -339,6 +408,7 @@
             padding: 0;
             animation: slideUp 0.3s ease;
         }
+
         @keyframes slideUp {
             from {
                 transform: translateY(40px);
@@ -349,6 +419,7 @@
                 opacity: 1;
             }
         }
+
         .modal-content .modal-image {
             width: 100%;
             height: 350px;
@@ -359,11 +430,13 @@
             align-items: center;
             justify-content: center;
         }
+
         .modal-content .modal-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         .modal-content .modal-image .no-image {
             color: #ff6b6b;
             font-size: 20px;
@@ -376,28 +449,34 @@
             justify-content: center;
             height: 100%;
         }
+
         .modal-content .modal-image .no-image span {
             font-size: 80px;
         }
+
         .modal-content .modal-body {
             padding: 24px 28px 28px;
         }
+
         .modal-content .modal-body h2 {
             font-size: 28px;
             font-weight: 800;
             color: #ffd700;
             margin-bottom: 6px;
         }
+
         .modal-content .modal-body .modal-sub {
             color: #8aaa8a;
             font-size: 14px;
             margin-bottom: 14px;
         }
+
         .modal-content .modal-body p {
             color: #c8e0c8;
             line-height: 1.7;
             font-size: 15px;
         }
+
         .modal-content .modal-body .modal-badge {
             display: inline-block;
             background: rgba(255, 215, 0, 0.15);
@@ -408,6 +487,7 @@
             font-weight: 700;
             margin-bottom: 12px;
         }
+
         .modal-content .modal-body .modal-close {
             margin-top: 18px;
             background: #ffd700;
@@ -422,16 +502,22 @@
             transition: 0.15s;
             box-shadow: 0 4px 0 #b89a2a;
         }
+
         .modal-content .modal-body .modal-close:active {
             transform: translateY(4px);
             box-shadow: 0 0px 0 #b89a2a;
         }
+
+        /* ============================================================
+                   ФАКТЫ
+                   ============================================================ */
         .facts-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 16px;
             margin-top: 30px;
         }
+
         .fact-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid #1e3a1e;
@@ -440,37 +526,47 @@
             text-align: center;
             transition: 0.2s;
         }
+
         .fact-card:hover {
             border-color: #2d4a2d;
             transform: translateY(-2px);
         }
+
         .fact-card .fact-emoji {
             font-size: 30px;
             display: block;
             margin-bottom: 6px;
         }
+
         .fact-card .fact-number {
             font-size: 24px;
             font-weight: 800;
             color: #ffd700;
         }
+
         .fact-card .fact-label {
             font-size: 13px;
             color: #8aaa8a;
             margin-top: 4px;
         }
+
+        /* ============================================================
+                   КАРТА
+                   ============================================================ */
         #map-page .map-wrapper {
             background: #162216;
             border-radius: 30px;
             padding: 18px;
             border: 1px solid #2d4a2d;
         }
+
         #map {
             height: 700px;
             border-radius: 20px;
             background: #1a2a1a;
             border: 2px solid #2d4a2d;
         }
+
         .map-legend {
             display: flex;
             justify-content: center;
@@ -482,6 +578,7 @@
             border-radius: 16px;
             border: 1px solid #2d4a2d;
         }
+
         .map-legend .item {
             display: flex;
             align-items: center;
@@ -489,6 +586,7 @@
             font-size: 13px;
             color: #b8d8b8;
         }
+
         .map-legend .item .box {
             width: 20px;
             height: 20px;
@@ -496,11 +594,13 @@
             border: 1px solid #4a7a4a;
             flex-shrink: 0;
         }
+
         .map-legend .item .box.circle {
             border-radius: 50%;
             width: 16px;
             height: 16px;
         }
+
         .map-legend .item .box.border-red {
             border: 3px solid #ff1744;
             background: transparent;
@@ -508,6 +608,7 @@
             width: 30px;
             height: 4px;
         }
+
         .map-legend .item .box.dashed {
             border: 2px dashed #4a6a4a;
             background: transparent;
@@ -515,6 +616,10 @@
             height: 2px;
             border-radius: 0;
         }
+
+        /* ============================================================
+                   ФУТЕР
+                   ============================================================ */
         .footer-site {
             text-align: center;
             padding: 25px 20px 15px;
@@ -524,25 +629,33 @@
             max-width: 1300px;
             margin: 0 auto;
         }
+
         .footer-site span {
             color: #6a8a6a;
         }
+
+        /* ============================================================
+                   LEAFLET КАСТОМ
+                   ============================================================ */
         .leaflet-popup-content {
             font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif !important;
             font-size: 14px !important;
             min-width: 180px;
         }
+
         .leaflet-popup-content strong {
             color: #1e5a1e;
             font-size: 18px;
             display: block;
             margin-bottom: 4px;
         }
+
         .leaflet-popup-content .popup-desc {
             color: #333;
             font-size: 13px;
             line-height: 1.5;
         }
+
         .leaflet-popup-content .popup-badge {
             display: inline-block;
             background: #2d6a2d;
@@ -554,22 +667,47 @@
             text-transform: uppercase;
             margin-top: 6px;
         }
+
         .leaflet-popup-content .popup-badge.capital {
             background: #ffd700;
             color: #1a2a1a;
         }
+
         .leaflet-popup-content-wrapper {
             border-radius: 16px !important;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4) !important;
         }
+
         .leaflet-popup-tip {
             background: white !important;
         }
-        .custom-marker {
-            background: none;
-            border: none;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+
+        /* ============================================================
+                   КАСТОМНЫЕ МАРКЕРЫ
+                   ============================================================ */
+        .my-marker {
+            background: none !important;
+            border: none !important;
+            font-size: 32px !important;
+            line-height: 32px !important;
+            text-align: center !important;
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.5) !important;
         }
+
+        .my-marker-star {
+            color: #ffd700 !important;
+            font-size: 42px !important;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.6) !important;
+        }
+
+        .my-marker-dot {
+            color: #ff6b6b !important;
+            font-size: 28px !important;
+        }
+
+        /* ============================================================
+                   КОМПАС
+                   ============================================================ */
         .compass-container {
             background: rgba(10, 25, 10, 0.88);
             backdrop-filter: blur(8px);
@@ -584,10 +722,12 @@
             position: relative;
             transition: 0.3s;
         }
+
         .compass-container:hover {
             border-color: #ffd700;
             transform: scale(1.05);
         }
+
         .compass-container .n {
             position: absolute;
             top: 4px;
@@ -638,28 +778,8 @@
         }
 
         /* ============================================================
-                   ВАЖНО: СТИЛИ ДЛЯ КАСТОМНЫХ МАРКЕРОВ
+                   АДАПТИВ
                    ============================================================ */
-        .my-marker {
-            background: none !important;
-            border: none !important;
-            font-size: 32px !important;
-            line-height: 32px !important;
-            text-align: center !important;
-            text-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.5) !important;
-        }
-
-        .my-marker-star {
-            color: #ffd700 !important;
-            font-size: 42px !important;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.6) !important;
-        }
-
-        .my-marker-dot {
-            color: #ff6b6b !important;
-            font-size: 28px !important;
-        }
-
         @media (max-width: 768px) {
             .navbar {
                 padding: 10px 16px;
@@ -674,18 +794,22 @@
                 padding: 6px 14px;
                 font-size: 12px;
             }
+
             .page {
                 padding: 16px 12px 30px;
             }
+
             .main-header h1 {
                 font-size: 28px;
             }
             .main-header p {
                 font-size: 14px;
             }
+
             .section-title {
                 font-size: 20px;
             }
+
             .quiz-section {
                 padding: 20px 18px 24px;
             }
@@ -696,15 +820,19 @@
                 padding: 10px 18px;
                 font-size: 13px;
             }
+
             .city-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
+
             .city-card .city-image {
                 height: 110px;
             }
+
             #map {
                 height: 460px;
             }
+
             .facts-section {
                 grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
                 gap: 12px;
@@ -712,6 +840,7 @@
             .fact-card .fact-number {
                 font-size: 20px;
             }
+
             .map-legend {
                 gap: 10px 18px;
                 font-size: 11px;
@@ -720,6 +849,7 @@
             .map-legend .item {
                 font-size: 11px;
             }
+
             .modal-content .modal-image {
                 height: 220px;
             }
@@ -730,6 +860,7 @@
                 font-size: 22px;
             }
         }
+
         @media (max-width: 480px) {
             .navbar .logo {
                 font-size: 15px;
@@ -738,18 +869,22 @@
                 padding: 5px 12px;
                 font-size: 11px;
             }
+
             .main-header h1 {
                 font-size: 22px;
             }
+
             .quiz-options button {
                 padding: 8px 14px;
                 font-size: 12px;
                 width: 100%;
             }
+
             .city-grid {
                 grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
                 gap: 10px;
             }
+
             .city-card .city-image {
                 height: 90px;
             }
@@ -759,9 +894,11 @@
             .city-card .city-name {
                 font-size: 14px;
             }
+
             #map {
                 height: 340px;
             }
+
             .quiz-feedback {
                 font-size: 13px;
                 padding: 12px 14px;
@@ -770,6 +907,7 @@
                 font-size: 12px;
                 padding: 6px 18px;
             }
+
             .modal-content .modal-image {
                 height: 170px;
             }
@@ -929,16 +1067,16 @@
         }
 
         // ============================================================
-        //  2. ВИКТОРИНА
+        //  2. ВИКТОРИНА — С ПРАВИЛЬНЫМИ ОТВЕТАМИ (СПАСИБО ФЕДЕ!)
         // ============================================================
         const QUIZ = [
             { question: 'Какой город Липецкой области считается самым древним?', options: ['Липецк', 'Елец', 'Данков', 'Задонск'], correct: 1 },
-            { question: 'Что является символом Лебедяни?', options: ['Яблоня', 'Подсолнух', 'Пшеница', 'Клён'], correct: 0 },
+            { question: 'Что является символом Лебедяни?', options: ['Яблоня', 'Лебедь', 'Подсолнух', 'Клён'], correct: 1 },
             { question: 'В каком городе находится знаменитый Задонский монастырь?', options: ['Елец', 'Липецк', 'Задонск', 'Чаплыгин'], correct: 2 },
             { question: 'Какая река протекает через Липецк?', options: ['Дон', 'Воронеж', 'Ока', 'Волга'], correct: 1 },
-            { question: 'В каком районе находится "Галичья гора"?', options: ['Данковский', 'Усманский', 'Грязинский', 'Лебедянский'], correct: 0 },
+            { question: 'В каком районе находится "Галичья гора"?', options: ['Данковский', 'Задонский', 'Грязинский', 'Лебедянский'], correct: 1 },
             { question: 'Кто дал имя городу Чаплыгин?', options: ['Лобачевский', 'Чаплыгин', 'Колмогоров', 'Перельман'], correct: 1 },
-            { question: 'Сколько муниципальных районов в Липецкой области?', options: ['12', '15', '17', '20'], correct: 2 },
+            { question: 'Сколько муниципальных районов в Липецкой области?', options: ['16', '17', '18', '19'], correct: 2 },
             { question: 'В каком году основан Липецк?', options: ['1603', '1703', '1803', '1903'], correct: 1 }
         ];
 
@@ -1082,7 +1220,7 @@
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
         // ============================================================
-        //  5. КАРТА — С МАРКЕРАМИ (НАСТОЯЩИМИ!)
+        //  5. КАРТА
         // ============================================================
         let mapInitialized = false;
 
@@ -1090,19 +1228,16 @@
             if (mapInitialized) return;
             mapInitialized = true;
 
-            // 1. СОЗДАЁМ КАРТУ
             const map = L.map('map', { center: [52.6, 39.6], zoom: 8 });
 
-            // 2. ДОБАВЛЯЕМ СЛОЙ
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '© OpenStreetMap',
                 maxZoom: 18,
             }).addTo(map);
 
-            // 3. МАСШТАБ
             L.control.scale({ position: 'bottomright', metric: true, imperial: false }).addTo(map);
 
-            // 4. КОМПАС
+            // Компас
             L.Control.extend({
                 options: { position: 'topright' },
                 onAdd: () => {
@@ -1121,9 +1256,7 @@
                 }
             }).addTo(map);
 
-            // ============================================================
-            //  ВСЕ 18 ГОРОДОВ НА КАРТЕ — ЭМОДЗИ МАРКЕРЫ (ВИДНЫ!)
-            // ============================================================
+            // Города на карте
             const cityCoords = [
                 { name: 'Липецк', lat: 52.61, lng: 39.60, capital: true },
                 { name: 'Елец', lat: 52.62, lng: 38.50, capital: false },
@@ -1145,10 +1278,7 @@
                 { name: 'Лев-Толстой', lat: 53.20, lng: 39.45, capital: false }
             ];
 
-            console.log('🗺️ ДОБАВЛЯЕМ МАРКЕРЫ НА КАРТУ:');
-
-            cityCoords.forEach((c, index) => {
-                // === КАСТОМНЫЙ МАРКЕР С ЭМОДЗИ ===
+            cityCoords.forEach(c => {
                 const markerHtml = c.capital ?
                     `<div class="my-marker my-marker-star">⭐</div>` :
                     `<div class="my-marker my-marker-dot">📍</div>`;
@@ -1172,7 +1302,7 @@
                     this.openPopup();
                 });
 
-                // === ПОДПИСЬ ПОД МАРКЕРОМ ===
+                // Подпись
                 const label = L.divIcon({
                     html: `<div style="
                         color: #fff;
@@ -1195,13 +1325,9 @@
 
                 L.marker([c.lat - 0.03, c.lng], { icon: label, interactive: false })
                     .addTo(map);
-
-                console.log(`   ${index+1}. ${c.capital ? '⭐' : '📍'} ${c.name} → lat:${c.lat}, lng:${c.lng}`);
             });
 
-            // ============================================================
-            //  РАЙОНЫ
-            // ============================================================
+            // Районы
             const districtIds = [
                 { id: 150116, name: 'Липецкий район' },
                 { id: 150117, name: 'Елецкий район' },
@@ -1269,9 +1395,7 @@
                     }).catch(() => {});
             });
 
-            // ============================================================
-            //  ГРАНИЦА ОБЛАСТИ — КРАСНАЯ!
-            // ============================================================
+            // Граница области — КРАСНАЯ!
             fetch('https://overpass-api.de/api/interpreter?data=[out:json];(relation(79975););out%20body;>;out%20skel%20qt;')
                 .then(r => r.json())
                 .then(data => {
@@ -1295,13 +1419,10 @@
                             .addTo(map);
                         L.polygon(coords, { color: '#ff1744', weight: 14, opacity: 0.12, fillColor: 'transparent', fillOpacity: 0 })
                             .addTo(map);
-                        console.log('✅ КРАСНАЯ ГРАНИЦА загружена!');
                     }
                 }).catch(() => {});
 
-            // ============================================================
-            //  РЕКИ
-            // ============================================================
+            // Реки
             [
                 [
                     [53.35, 39.05],
@@ -1316,9 +1437,7 @@
                 L.polyline(r, { color: '#4a8aaa', weight: 4, opacity: 0.5 }).addTo(map);
             });
 
-            // ============================================================
-            //  СОСЕДНИЕ РЕГИОНЫ
-            // ============================================================
+            // Соседние регионы
             [
                 { name: 'Рязанская обл.', lat: 53.60, lng: 40.00 },
                 { name: 'Тамбовская обл.', lat: 52.30, lng: 41.50 },
@@ -1336,14 +1455,10 @@
                 }).addTo(map);
             });
 
-            // Фокусируем карту на область
             setTimeout(() => map.fitBounds([
                 [53.6, 36.0],
                 [51.5, 41.5]
             ]), 500);
-
-            console.log('🗺️ Карта загружена с 18 городами!');
-            console.log('📍 ТЕПЕРЬ МАРКЕРЫ ДОЛЖНЫ БЫТЬ ВИДНЫ! ⭐ и 📍');
         }
 
         // ============================================================
@@ -1364,8 +1479,7 @@
         }, 1000);
 
         console.log('🏛️ Сайт Липецкой области загружен!');
-        console.log('📍 На карте есть все 18 городов с маркерами!');
-        console.log('📸 Если нет фото — покажется "автор распиздяй"');
+        console.log('✅ Викторина с правильными ответами (спасибо Феде!)');
     </script>
 
 </body>
