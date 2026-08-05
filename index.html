@@ -32,7 +32,7 @@
         }
 
         /* ============================================================
-                   ПРИВЕТСТВЕННАЯ ШАПКА (СПЛЭШ)
+                   ПРИВЕТСТВЕННАЯ ШАПКА
                    ============================================================ */
         .splash {
             position: fixed;
@@ -161,7 +161,7 @@
         }
 
         /* ============================================================
-                   ОСНОВНОЙ САЙТ (появляется после скролла)
+                   ОСНОВНОЙ САЙТ
                    ============================================================ */
         .main-site {
             opacity: 0;
@@ -174,7 +174,7 @@
         }
 
         /* ============================================================
-                   НАВИГАЦИЯ — с неоном
+                   НАВИГАЦИЯ
                    ============================================================ */
         .navbar {
             background: linear-gradient(145deg, #0f1a0f, #162216);
@@ -273,7 +273,7 @@
         }
 
         /* ============================================================
-                   ЗАГОЛОВКИ — с неоном
+                   ЗАГОЛОВКИ
                    ============================================================ */
         .main-header {
             text-align: center;
@@ -315,7 +315,7 @@
         }
 
         /* ============================================================
-                   ВИКТОРИНА — с неоном
+                   ВИКТОРИНА
                    ============================================================ */
         .quiz-section {
             background: linear-gradient(145deg, #162216, #1a2a1a);
@@ -429,7 +429,7 @@
         }
 
         /* ============================================================
-                   ГОРОДА (КАРТОЧКИ) — с неоном
+                   ГОРОДА
                    ============================================================ */
         .city-section {
             background: linear-gradient(145deg, #162216, #1a2a1a);
@@ -442,17 +442,18 @@
 
         .city-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
         }
 
         .city-card {
             background: rgba(255, 255, 255, 0.04);
             border: 2px solid #2d4a2d;
             border-radius: 18px;
-            overflow: hidden;
+            padding: 20px 16px 16px;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .city-card:hover {
@@ -461,72 +462,31 @@
             box-shadow: 0 12px 40px rgba(180, 77, 255, 0.2), 0 0 60px rgba(180, 77, 255, 0.05);
         }
 
-        .city-card .city-image {
-            width: 100%;
-            height: 160px;
-            background: #1a2a1a;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .city-card .city-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.3s;
-        }
-
-        .city-card:hover .city-image img {
-            transform: scale(1.05);
-        }
-
-        .city-card .city-image .no-image {
-            color: #d4b8ff;
-            font-size: 16px;
-            font-weight: 700;
-            text-align: center;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(145deg, #1a1a2e, #16213e);
-        }
-
-        .city-card .city-image .no-image span {
-            font-size: 48px;
+        .city-card .city-emoji-big {
+            font-size: 40px;
             display: block;
             margin-bottom: 8px;
         }
 
-        .city-card .city-image .no-image .city-emoji-big {
-            font-size: 60px;
-        }
-
-        .city-card .city-info {
-            padding: 14px 16px 16px;
-        }
-
         .city-card .city-name {
             font-weight: 700;
-            font-size: 16px;
+            font-size: 18px;
             color: #d4e8d4;
         }
 
         .city-card .city-desc {
             font-size: 12px;
             color: #7a9a7a;
-            margin-top: 2px;
+            margin-top: 4px;
         }
 
-        .city-card .city-emoji {
-            font-size: 14px;
-            margin-right: 6px;
+        .city-card .city-story-preview {
+            font-size: 12px;
+            color: #6a8a6a;
+            margin-top: 8px;
+            font-style: italic;
+            border-top: 1px solid #2d4a2d;
+            padding-top: 8px;
         }
 
         .city-card.capital {
@@ -540,7 +500,336 @@
         }
 
         /* ============================================================
-                   ФАКТЫ — КЛИКАБЕЛЬНЫЕ!
+                   СТРАНИЦА "ЧЕМ ГОРДИТСЯ ОБЛАСТЬ"
+                   ============================================================ */
+        .pride-section {
+            background: linear-gradient(145deg, #162216, #1a2a1a);
+            border-radius: 30px;
+            padding: 30px 35px 35px;
+            border: 2px solid #b44dff;
+            box-shadow: 0 0 30px rgba(180, 77, 255, 0.08), inset 0 0 30px rgba(180, 77, 255, 0.03);
+        }
+
+        .pride-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .pride-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid #2d4a2d;
+            border-radius: 18px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pride-item:hover {
+            border-color: #b44dff;
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px rgba(180, 77, 255, 0.12);
+        }
+
+        .pride-item .pride-emoji {
+            font-size: 40px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .pride-item .pride-info {
+            flex: 1;
+        }
+
+        .pride-item .pride-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #d4e8d4;
+        }
+
+        .pride-item .pride-desc {
+            font-size: 14px;
+            color: #8aaa8a;
+            margin-top: 4px;
+        }
+
+        .pride-item .pride-click-hint {
+            font-size: 12px;
+            color: #4a6a4a;
+            margin-top: 6px;
+            border-top: 1px dashed #2d4a2d;
+            padding-top: 6px;
+            font-style: italic;
+        }
+
+        .pride-item.pride-1 {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.05);
+        }
+        .pride-item.pride-2 {
+            border-color: #c0c0c0;
+            background: rgba(192, 192, 192, 0.04);
+        }
+        .pride-item.pride-3 {
+            border-color: #cd7f32;
+            background: rgba(205, 127, 50, 0.04);
+        }
+
+        /* ============================================================
+                   СТРАНИЦА ДОСТОПРИМЕЧАТЕЛЬНОСТЕЙ
+                   ============================================================ */
+        .places-section {
+            background: linear-gradient(145deg, #162216, #1a2a1a);
+            border-radius: 30px;
+            padding: 30px 35px 35px;
+            border: 2px solid #b44dff;
+            box-shadow: 0 0 30px rgba(180, 77, 255, 0.08), inset 0 0 30px rgba(180, 77, 255, 0.03);
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .place-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid #2d4a2d;
+            border-radius: 18px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .place-item:hover {
+            border-color: #b44dff;
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px rgba(180, 77, 255, 0.12);
+        }
+
+        .place-item .place-rank {
+            font-size: 28px;
+            font-weight: 900;
+            color: #ffd700;
+            min-width: 60px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .place-item .place-info {
+            flex: 1;
+        }
+
+        .place-item .place-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #d4e8d4;
+        }
+
+        .place-item .place-desc {
+            font-size: 14px;
+            color: #8aaa8a;
+            margin-top: 4px;
+        }
+
+        .place-item .place-emoji {
+            font-size: 36px;
+        }
+
+        .place-item .place-visitors {
+            font-size: 13px;
+            color: #d4b8ff;
+            margin-top: 4px;
+            background: rgba(180, 77, 255, 0.06);
+            padding: 4px 12px;
+            border-radius: 30px;
+            display: inline-block;
+            border: 1px solid rgba(180, 77, 255, 0.08);
+        }
+
+        .place-item .place-click-hint {
+            font-size: 12px;
+            color: #4a6a4a;
+            margin-top: 6px;
+            border-top: 1px dashed #2d4a2d;
+            padding-top: 6px;
+            font-style: italic;
+        }
+
+        .place-item .place-data-source {
+            font-size: 10px;
+            color: #3a5a3a;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .place-item.place-1 {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.05);
+        }
+        .place-item.place-2 {
+            border-color: #c0c0c0;
+            background: rgba(192, 192, 192, 0.04);
+        }
+        .place-item.place-3 {
+            border-color: #cd7f32;
+            background: rgba(205, 127, 50, 0.04);
+        }
+
+        /* ============================================================
+                   МОДАЛКИ
+                   ============================================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 9998;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a2a1a;
+            border-radius: 30px;
+            max-width: 600px;
+            width: 90%;
+            padding: 30px 35px 35px;
+            border: 2px solid #b44dff;
+            box-shadow: 0 0 60px rgba(180, 77, 255, 0.15);
+            animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content .modal-emoji {
+            font-size: 60px;
+            display: block;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .modal-content h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffd700;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .modal-content .modal-sub {
+            color: #8aaa8a;
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .modal-content .modal-story {
+            color: #c8e0c8;
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content .modal-close {
+            display: block;
+            margin: 0 auto;
+            background: #ffd700;
+            color: #1a2a1a;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 4px 0 #b89a2a;
+        }
+
+        .modal-content .modal-close:active {
+            transform: translateY(4px);
+            box-shadow: 0 0px 0 #b89a2a;
+        }
+
+        .modal-content .modal-badge {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.15);
+            color: #ffd700;
+            padding: 2px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .modal-content .modal-visitors {
+            text-align: center;
+            font-size: 14px;
+            color: #d4b8ff;
+            margin-top: 10px;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: rgba(180, 77, 255, 0.08);
+            border: 1px solid rgba(180, 77, 255, 0.15);
+            display: inline-block;
+            width: 100%;
+        }
+
+        .modal-content .modal-rating {
+            text-align: center;
+            font-size: 14px;
+            color: #ffd700;
+            margin-top: 8px;
+            padding: 6px 16px;
+            border-radius: 30px;
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            display: inline-block;
+            width: 100%;
+        }
+
+        .modal-content .modal-data-source {
+            text-align: center;
+            font-size: 11px;
+            color: #3a5a3a;
+            margin-top: 12px;
+            font-style: italic;
+            border-top: 1px solid #1e3a1e;
+            padding-top: 12px;
+        }
+
+        /* ============================================================
+                   ФАКТЫ
                    ============================================================ */
         .facts-section {
             display: grid;
@@ -585,7 +874,7 @@
         }
 
         /* ============================================================
-                   МОДАЛКА ДЛЯ ФАКТОВ
+                   ФАКТЫ МОДАЛКА
                    ============================================================ */
         .fact-modal-overlay {
             display: none;
@@ -667,146 +956,6 @@
         }
 
         /* ============================================================
-                   МОДАЛКА ДЛЯ ГОРОДОВ
-                   ============================================================ */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 9998;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: #1a2a1a;
-            border-radius: 30px;
-            max-width: 700px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 2px solid #b44dff;
-            box-shadow: 0 0 60px rgba(180, 77, 255, 0.15);
-            padding: 0;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(40px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-content .modal-image {
-            width: 100%;
-            height: 350px;
-            overflow: hidden;
-            border-radius: 30px 30px 0 0;
-            background: #0a150a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content .modal-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .modal-content .modal-image .no-image {
-            color: #d4b8ff;
-            font-size: 20px;
-            font-weight: 700;
-            text-align: center;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(145deg, #1a1a2e, #16213e);
-        }
-
-        .modal-content .modal-image .no-image span {
-            font-size: 80px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .modal-content .modal-body {
-            padding: 24px 28px 28px;
-        }
-
-        .modal-content .modal-body h2 {
-            font-size: 28px;
-            font-weight: 800;
-            color: #ffd700;
-            margin-bottom: 6px;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
-        }
-
-        .modal-content .modal-body .modal-sub {
-            color: #8aaa8a;
-            font-size: 14px;
-            margin-bottom: 14px;
-        }
-
-        .modal-content .modal-body p {
-            color: #c8e0c8;
-            line-height: 1.7;
-            font-size: 15px;
-        }
-
-        .modal-content .modal-body .modal-badge {
-            display: inline-block;
-            background: rgba(255, 215, 0, 0.15);
-            color: #ffd700;
-            padding: 2px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.05);
-        }
-
-        .modal-content .modal-body .modal-close {
-            margin-top: 18px;
-            background: #ffd700;
-            color: #1a2a1a;
-            border: none;
-            padding: 10px 30px;
-            border-radius: 30px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.15s;
-            box-shadow: 0 4px 0 #b89a2a;
-        }
-
-        .modal-content .modal-body .modal-close:active {
-            transform: translateY(4px);
-            box-shadow: 0 0px 0 #b89a2a;
-        }
-
-        /* ============================================================
                    КАРТА
                    ============================================================ */
         #map-page .map-wrapper {
@@ -875,24 +1024,7 @@
         }
 
         /* ============================================================
-                   ФУТЕР
-                   ============================================================ */
-        .footer-site {
-            text-align: center;
-            padding: 25px 20px 15px;
-            border-top: 1px solid #2d4a2d;
-            color: #4a6a4a;
-            font-size: 13px;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .footer-site span {
-            color: #6a8a6a;
-        }
-
-        /* ============================================================
-                   LEAFLET КАСТОМ
+                   LEAFLET
                    ============================================================ */
         .leaflet-popup-content {
             font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif !important;
@@ -939,9 +1071,6 @@
             background: white !important;
         }
 
-        /* ============================================================
-                   КАСТОМНЫЕ МАРКЕРЫ
-                   ============================================================ */
         .my-marker {
             background: none !important;
             border: none !important;
@@ -962,9 +1091,6 @@
             font-size: 28px !important;
         }
 
-        /* ============================================================
-                   КОМПАС
-                   ============================================================ */
         .compass-container {
             background: rgba(10, 25, 10, 0.88);
             backdrop-filter: blur(8px);
@@ -1035,6 +1161,20 @@
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
         }
 
+        .footer-site {
+            text-align: center;
+            padding: 25px 20px 15px;
+            border-top: 1px solid #2d4a2d;
+            color: #4a6a4a;
+            font-size: 13px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .footer-site span {
+            color: #6a8a6a;
+        }
+
         /* ============================================================
                    АДАПТИВ
                    ============================================================ */
@@ -1077,9 +1217,6 @@
             .city-grid {
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             }
-            .city-card .city-image {
-                height: 120px;
-            }
             #map {
                 height: 460px;
             }
@@ -1098,14 +1235,8 @@
             .map-legend .item {
                 font-size: 11px;
             }
-            .modal-content .modal-image {
-                height: 220px;
-            }
-            .modal-content .modal-body {
-                padding: 18px 20px 22px;
-            }
-            .modal-content .modal-body h2 {
-                font-size: 22px;
+            .modal-content {
+                padding: 25px 20px 30px;
             }
             .fact-modal-content {
                 padding: 25px 20px 30px;
@@ -1132,6 +1263,35 @@
                 padding: 14px 30px;
                 font-size: 16px;
             }
+            .pride-item {
+                flex-wrap: wrap;
+                padding: 16px;
+            }
+            .pride-item .pride-emoji {
+                font-size: 32px;
+                min-width: 40px;
+            }
+            .pride-item .pride-name {
+                font-size: 18px;
+            }
+            .place-item {
+                flex-wrap: wrap;
+                padding: 16px;
+            }
+            .place-item .place-rank {
+                min-width: 40px;
+                font-size: 22px;
+            }
+            .place-item .place-emoji {
+                font-size: 28px;
+            }
+            .place-item .place-name {
+                font-size: 18px;
+            }
+            .places-grid,
+            .pride-grid {
+                gap: 14px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1154,14 +1314,8 @@
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
                 gap: 10px;
             }
-            .city-card .city-image {
-                height: 100px;
-            }
-            .city-card .city-info {
-                padding: 10px 12px 12px;
-            }
             .city-card .city-name {
-                font-size: 14px;
+                font-size: 16px;
             }
             #map {
                 height: 340px;
@@ -1174,13 +1328,16 @@
                 font-size: 12px;
                 padding: 6px 18px;
             }
-            .modal-content .modal-image {
-                height: 170px;
+            .modal-content {
+                padding: 20px 16px 24px;
             }
-            .modal-content .modal-body h2 {
-                font-size: 19px;
+            .modal-content .modal-emoji {
+                font-size: 48px;
             }
-            .modal-content .modal-body p {
+            .modal-content h2 {
+                font-size: 22px;
+            }
+            .modal-content .modal-story {
                 font-size: 14px;
             }
             .fact-modal-content {
@@ -1215,13 +1372,44 @@
                 font-size: 12px;
                 bottom: 25px;
             }
+            .pride-item .pride-emoji {
+                font-size: 28px;
+                min-width: 30px;
+            }
+            .pride-item .pride-name {
+                font-size: 16px;
+            }
+            .pride-item .pride-desc {
+                font-size: 12px;
+            }
+            .place-item .place-rank {
+                font-size: 18px;
+                min-width: 30px;
+            }
+            .place-item .place-emoji {
+                font-size: 24px;
+            }
+            .place-item .place-name {
+                font-size: 16px;
+            }
+            .place-item .place-desc {
+                font-size: 12px;
+            }
+            .place-item .place-visitors {
+                font-size: 11px;
+                padding: 2px 10px;
+            }
+            .places-grid,
+            .pride-grid {
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
     <!-- ============================================================
-    ПРИВЕТСТВЕННАЯ ШАПКА (СПЛЭШ)
+    ПРИВЕТСТВЕННАЯ ШАПКА
     ============================================================ -->
     <div class="splash" id="splash">
         <span class="splash-logo">🏛️</span>
@@ -1249,6 +1437,8 @@
             <div class="nav-links">
                 <button class="active" id="navMain" onclick="switchPage('main')">🏠 Главная</button>
                 <button id="navMap" onclick="switchPage('map')">🗺️ Карта</button>
+                <button id="navPlaces" onclick="switchPage('places')">🏆 ТОП-5 мест</button>
+                <button id="navPride" onclick="switchPage('pride')">🏭 Чем гордится область</button>
             </div>
         </nav>
 
@@ -1345,6 +1535,141 @@
         </div>
 
         <!-- ============================================================
+        СТРАНИЦА "ЧЕМ ГОРДИТСЯ ОБЛАСТЬ"
+        ============================================================ -->
+        <div class="page" id="pride-page">
+            <div class="main-header">
+                <h1>🏭 Чем гордится Липецкая область</h1>
+                <p>достижения и уникальные вещи, которые делают наш регион особенным</p>
+            </div>
+
+            <div class="pride-section">
+                <div class="section-title"><span>🏆</span> Наши достижения</div>
+                <div class="pride-grid">
+                    <div class="pride-item pride-1" onclick="openPrideModal(1)">
+                        <div class="pride-emoji">🏭</div>
+                        <div class="pride-info">
+                            <div class="pride-name">Металлургия — сердце региона</div>
+                            <div class="pride-desc">Новолипецкий металлургический комбинат — один из крупнейших в мире!</div>
+                            <div class="pride-click-hint">👆 кликни, чтобы узнать подробнее</div>
+                        </div>
+                    </div>
+
+                    <div class="pride-item pride-2" onclick="openPrideModal(2)">
+                        <div class="pride-emoji">⚡</div>
+                        <div class="pride-info">
+                            <div class="pride-name">Особая экономическая зона «Липецк»</div>
+                            <div class="pride-desc">Одна из самых успешных ОЭЗ в России — здесь работают десятки предприятий.</div>
+                            <div class="pride-click-hint">👆 кликни, чтобы узнать подробнее</div>
+                        </div>
+                    </div>
+
+                    <div class="pride-item pride-3" onclick="openPrideModal(3)">
+                        <div class="pride-emoji">🧵</div>
+                        <div class="pride-info">
+                            <div class="pride-name">Елецкие кружева</div>
+                            <div class="pride-desc">Народный промысел с мировой известностью — елецкие кружева знают во всём мире!</div>
+                            <div class="pride-click-hint">👆 кликни, чтобы узнать подробнее</div>
+                        </div>
+                    </div>
+
+                    <div class="pride-item" onclick="openPrideModal(4)">
+                        <div class="pride-emoji">🌱</div>
+                        <div class="pride-info">
+                            <div class="pride-name">Сахарная свекла</div>
+                            <div class="pride-desc">Липецкая область — один из лидеров в России по выращиванию сахарной свеклы!</div>
+                            <div class="pride-click-hint">👆 кликни, чтобы узнать подробнее</div>
+                        </div>
+                    </div>
+
+                    <div class="pride-item" onclick="openPrideModal(5)">
+                        <div class="pride-emoji">💧</div>
+                        <div class="pride-info">
+                            <div class="pride-name">Минеральные воды Липецка</div>
+                            <div class="pride-desc">Курорт «Липецк» известен своими минеральными водами с XVII века — лечит суставы и нервы!</div>
+                            <div class="pride-click-hint">👆 кликни, чтобы узнать подробнее</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+        СТРАНИЦА ТОП-5 ДОСТОПРИМЕЧАТЕЛЬНОСТЕЙ
+        ============================================================ -->
+        <div class="page" id="places-page">
+            <div class="main-header">
+                <h1>🏆 ТОП-5 достопримечательностей</h1>
+                <p>лучшие места Липецкой области</p>
+            </div>
+
+            <div class="places-section">
+                <div class="section-title"><span>🏆</span> Рейтинг мест</div>
+                <div class="places-grid">
+                    <div class="place-item place-1" onclick="openPlaceModal(1)">
+                        <div class="place-rank">#1</div>
+                        <div class="place-emoji">🏛️</div>
+                        <div class="place-info">
+                            <div class="place-name">Кудыкина гора</div>
+                            <div class="place-desc">Легендарное место, где, по слухам, стоял лагерь Степана Разина.</div>
+                            <div class="place-visitors">👥 ~1,5 млн человек в год</div>
+                            <div class="place-click-hint">👆 кликни, чтобы узнать подробнее</div>
+                            <div class="place-data-source">📊 данные от Алисы AI</div>
+                        </div>
+                    </div>
+
+                    <div class="place-item place-2" onclick="openPlaceModal(2)">
+                        <div class="place-rank">#2</div>
+                        <div class="place-emoji">⛪</div>
+                        <div class="place-info">
+                            <div class="place-name">Задонский монастырь</div>
+                            <div class="place-desc">Рождество-Богородицкий монастырь — главная духовная жемчужина области.</div>
+                            <div class="place-visitors">👥 ~300 000 паломников в год</div>
+                            <div class="place-click-hint">👆 кликни, чтобы узнать подробнее</div>
+                            <div class="place-data-source">📊 данные от Алисы AI</div>
+                        </div>
+                    </div>
+
+                    <div class="place-item place-3" onclick="openPlaceModal(3)">
+                        <div class="place-rank">#3</div>
+                        <div class="place-emoji">🌲</div>
+                        <div class="place-info">
+                            <div class="place-name">Усманский бор</div>
+                            <div class="place-desc">Реликтовый лес, где растут сосны возрастом больше 200 лет!</div>
+                            <div class="place-visitors">👥 ~30 000 человек в год</div>
+                            <div class="place-click-hint">👆 кликни, чтобы узнать подробнее</div>
+                            <div class="place-data-source">📊 данные от Алисы AI</div>
+                        </div>
+                    </div>
+
+                    <div class="place-item" onclick="openPlaceModal(4)">
+                        <div class="place-rank">#4</div>
+                        <div class="place-emoji">🏞️</div>
+                        <div class="place-info">
+                            <div class="place-name">Галичья гора</div>
+                            <div class="place-desc">Уникальный заповедник с растениями, которые пережили ледниковый период!</div>
+                            <div class="place-visitors">👥 ~10 000 человек в год</div>
+                            <div class="place-click-hint">👆 кликни, чтобы узнать подробнее</div>
+                            <div class="place-data-source">📊 данные от Алисы AI</div>
+                        </div>
+                    </div>
+
+                    <div class="place-item" onclick="openPlaceModal(5)">
+                        <div class="place-rank">#5</div>
+                        <div class="place-emoji">📚</div>
+                        <div class="place-info">
+                            <div class="place-name">Музей-усадьба Л.Н. Толстого</div>
+                            <div class="place-desc">В посёлке Лев-Толстой находится усадьба, где великий писатель работал над «Анной Карениной».</div>
+                            <div class="place-visitors">👥 ~250 000 человек в год</div>
+                            <div class="place-click-hint">👆 кликни, чтобы узнать подробнее</div>
+                            <div class="place-data-source">📊 данные от Алисы AI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================
         ФУТЕР
         ============================================================ -->
         <div class="footer-site">
@@ -1356,24 +1681,44 @@
     </div> <!-- /main-site -->
 
     <!-- ============================================================
-    МОДАЛКА ДЛЯ ГОРОДОВ
+    МОДАЛКИ
     ============================================================ -->
     <div class="modal-overlay" id="cityModal">
         <div class="modal-content">
-            <div class="modal-image" id="modalImage"></div>
-            <div class="modal-body">
-                <div class="modal-badge" id="modalBadge">🏙️ ГОРОД</div>
-                <h2 id="modalTitle">Название</h2>
-                <div class="modal-sub" id="modalSub">описание</div>
-                <p id="modalDesc">Подробная информация о городе</p>
-                <button class="modal-close" onclick="closeModal()">✕ Закрыть</button>
-            </div>
+            <span class="modal-emoji" id="modalEmoji">🏙️</span>
+            <h2 id="modalTitle">Название</h2>
+            <div class="modal-sub" id="modalSub">описание</div>
+            <div class="modal-badge" id="modalBadge">🏙️ ГОРОД</div>
+            <div class="modal-story" id="modalStory">История города...</div>
+            <button class="modal-close" onclick="closeModal()">✕ Закрыть</button>
         </div>
     </div>
 
-    <!-- ============================================================
-    МОДАЛКА ДЛЯ ФАКТОВ
-    ============================================================ -->
+    <div class="modal-overlay" id="prideModal">
+        <div class="modal-content">
+            <span class="modal-emoji" id="prideModalEmoji">🏭</span>
+            <h2 id="prideModalTitle">Название</h2>
+            <div class="modal-sub" id="prideModalSub">описание</div>
+            <div class="modal-badge" id="prideModalBadge">🏆 ГОРДОСТЬ ОБЛАСТИ</div>
+            <div class="modal-story" id="prideModalStory">Подробная информация...</div>
+            <button class="modal-close" onclick="closePrideModal()">✕ Закрыть</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="placeModal">
+        <div class="modal-content">
+            <span class="modal-emoji" id="placeModalEmoji">🏛️</span>
+            <h2 id="placeModalTitle">Название</h2>
+            <div class="modal-sub" id="placeModalSub">описание</div>
+            <div class="modal-badge" id="placeModalBadge">🏆 ДОСТОПРИМЕЧАТЕЛЬНОСТЬ</div>
+            <div class="modal-story" id="placeModalStory">Подробная история...</div>
+            <div class="modal-visitors" id="placeModalVisitors">👥 Посещаемость: ...</div>
+            <div class="modal-rating" id="placeModalRating">⭐ Рейтинг: 5/5</div>
+            <div class="modal-data-source" id="placeModalSource">📊 данные от Алисы AI</div>
+            <button class="modal-close" onclick="closePlaceModal()">✕ Закрыть</button>
+        </div>
+    </div>
+
     <div class="fact-modal-overlay" id="factModal">
         <div class="fact-modal-content">
             <span class="fact-modal-emoji" id="factModalEmoji">🏛️</span>
@@ -1431,7 +1776,8 @@
             document.getElementById(page + '-page').classList.add('active');
 
             document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-            document.getElementById(page === 'main' ? 'navMain' : 'navMap').classList.add('active');
+            const btnMap = { main: 'navMain', map: 'navMap', places: 'navPlaces', pride: 'navPride' };
+            document.getElementById(btnMap[page]).classList.add('active');
 
             if (page === 'map' && !window.mapInitialized) {
                 initMap();
@@ -1519,27 +1865,27 @@
         }
 
         // ============================================================
-        //  3. ГОРОДА (ПУТИ К ФОТО ПРАВИЛЬНЫЕ!)
+        //  3. ГОРОДА
         // ============================================================
         const CITIES = [
-            { name: 'Липецк', emoji: '⭐', desc: 'столица', capital: true, img: 'images/lipetsk.jpg', fullDesc: 'Административный центр Липецкой области. Крупный промышленный город. Основан в 1703 году.' },
-            { name: 'Елец', emoji: '⛪', desc: 'древний город', capital: false, img: 'images/elets.jpg', fullDesc: 'Известен с 1146 года. Богатая купеческая история, знаменит елецким кружевом.' },
-            { name: 'Грязи', emoji: '🚂', desc: 'транспортный узел', capital: false, img: 'images/gryazi.jpg', fullDesc: 'Крупный железнодорожный узел. Название от грязевых вулканов.' },
-            { name: 'Данков', emoji: '🏞️', desc: 'природа', capital: false, img: 'images/dankov.jpg', fullDesc: 'Город на Дону. Рядом — "Галичья гора" с реликтовыми растениями.' },
-            { name: 'Лебедянь', emoji: '🍎', desc: 'сады', capital: false, img: 'images/lebedyan.jpg', fullDesc: 'Город-сад, знаменитый яблоневыми садами и праздником "Яблочный спас".' },
-            { name: 'Чаплыгин', emoji: '🐎', desc: 'конный', capital: false, img: 'images/chaplygin.jpg', fullDesc: 'Родина математика Чаплыгина. В городе крупный конный завод.' },
-            { name: 'Задонск', emoji: '🕊️', desc: 'духовный центр', capital: false, img: 'images/zadonsk.jpg', fullDesc: 'Знаменитый Задонский монастырь, мощи святителя Тихона Задонского.' },
-            { name: 'Усмань', emoji: '🌲', desc: 'лес', capital: false, img: 'images/usman.jpg', fullDesc: 'Усманский бор — реликтовый лес с соснами возрастом более 200 лет.' },
-            { name: 'Доброе', emoji: '🌻', desc: 'северо-восток', capital: false, img: 'images/dobroe.jpg', fullDesc: 'Центр Добровского района на реке Воронеж. Богатая история.' },
-            { name: 'Красное', emoji: '🏘️', desc: 'север', capital: false, img: 'images/krasnoe.jpg', fullDesc: 'Центр Краснинского района на севере области, граничит с Тульской областью.' },
-            { name: 'Тербуны', emoji: '🌾', desc: 'юго-запад', capital: false, img: 'images/terbuny.jpg', fullDesc: 'Центр Тербунского района. Здесь находится крупный сахарный завод.' },
-            { name: 'Измалково', emoji: '🏡', desc: 'запад', capital: false, img: 'images/izmalkovo.jpg', fullDesc: 'Центр Измалковского района на западе области.' },
-            { name: 'Долгоруково', emoji: '🏡', desc: 'юго-запад', capital: false, img: 'images/dolgorukovo.jpg', fullDesc: 'Центр Долгоруковского района на юго-западе области.' },
-            { name: 'Хлевное', emoji: '🏡', desc: 'юг', capital: false, img: 'images/khlevnoe.jpg', fullDesc: 'Центр Хлевенского района на юге области.' },
-            { name: 'Добринка', emoji: '🏡', desc: 'юго-восток', capital: false, img: 'images/dobrinka.jpg', fullDesc: 'Центр Добринского района на юго-востоке области.' },
-            { name: 'Волово', emoji: '🏡', desc: 'запад', capital: false, img: 'images/volovo.jpg', fullDesc: 'Центр Воловского района на западе, граничит с Орловской областью.' },
-            { name: 'Становое', emoji: '🏡', desc: 'северо-запад', capital: false, img: 'images/stanovoye.jpg', fullDesc: 'Центр Становлянского района на северо-западе области.' },
-            { name: 'Лев-Толстой', emoji: '📚', desc: 'имение Толстого', capital: false, img: 'images/lev-tolstoy.jpg', fullDesc: 'Музей-усадьба Л.Н. Толстого, где он работал над "Анной Карениной".' }
+            { name: 'Липецк', emoji: '⭐', desc: 'столица', capital: true, story: 'Липецк был основан в 1703 году по указу Петра I. Город вырос из металлургического завода и стал промышленным центром. Сегодня это современный город с богатой историей, где соседствуют старые заводы и новые районы. А ещё в Липецке есть курорт с минеральными водами — можно поправить здоровье и вспомнить Петра I.' },
+            { name: 'Елец', emoji: '⛪', desc: 'древний город', capital: false, story: 'Елец — один из древнейших городов России, впервые упоминается в 1146 году. Город-воин, город-труженик. Здесь жили купцы, строили храмы, плели знаменитое елецкое кружево. Елец пережил монгольское нашествие, войны и революции, но сохранил свой дух.' },
+            { name: 'Грязи', emoji: '🚂', desc: 'транспортный узел', capital: false, story: 'Грязи — город железнодорожников. Название пошло от грязевых вулканов, которые были в этих местах. Сегодня это важный транспортный узел, где пересекаются дороги на Москву, Воронеж и другие города. Очень уютный и спокойный город.' },
+            { name: 'Данков', emoji: '🏞️', desc: 'природа', capital: false, story: 'Данков стоит на живописном берегу Дона. Рядом находится знаменитая Галичья гора — уникальный заповедник с растениями, которые помнят мамонтов. Город часто называют "воротами в природу" Липецкой области.' },
+            { name: 'Лебедянь', emoji: '🍎', desc: 'сады', capital: false, story: 'Лебедянь — город-сад. Название пошло от лебедей, которые когда-то водились в этих местах. Сегодня Лебедянь славится своими яблоневыми садами и ежегодным праздником "Яблочный спас". Если любишь яблоки — тебе сюда!' },
+            { name: 'Чаплыгин', emoji: '🐎', desc: 'конный', capital: false, story: 'Чаплыгин — родина знаменитого математика Сергея Чаплыгина. Город с богатыми конными традициями — здесь находится крупный конный завод. Местные говорят, что лошади здесь самые быстрые в области.' },
+            { name: 'Задонск', emoji: '🕊️', desc: 'духовный центр', capital: false, story: 'Задонск — духовное сердце Липецкой области. Здесь находится Задонский Рождество-Богородицкий монастырь, где покоятся мощи святителя Тихона Задонского. Люди приезжают сюда за умиротворением и надеждой.' },
+            { name: 'Усмань', emoji: '🌲', desc: 'лес', capital: false, story: 'Усмань — город в окружении лесов. Усманский бор — реликтовый лес, где сосны растут больше 200 лет. Это место, где можно забыть о суете и просто дышать полной грудью. Экотуризм в чистом виде.' },
+            { name: 'Доброе', emoji: '🌻', desc: 'северо-восток', capital: false, story: 'Доброе — центр Добровского района. Название говорит само за себя — здесь действительно добрые люди. Село стоит на реке Воронеж и славится своей историей и уютной атмосферой.' },
+            { name: 'Красное', emoji: '🏘️', desc: 'север', capital: false, story: 'Красное — центр Краснинского района на севере области. Село граничит с Тульской областью. Местные говорят, что здесь самые вкусные ягоды и мёд во всей области.' },
+            { name: 'Тербуны', emoji: '🌾', desc: 'юго-запад', capital: false, story: 'Тербуны — центр Тербунского района. Здесь находится крупный сахарный завод, который кормит сахаром пол-области. Село славится трудолюбивыми людьми и бескрайними полями.' },
+            { name: 'Измалково', emoji: '🏡', desc: 'запад', capital: false, story: 'Измалково — центр Измалковского района на западе области. Спокойное село с богатой историей. Здесь любят говорить: "У нас тихо, уютно и люди добрые".' },
+            { name: 'Долгоруково', emoji: '🏡', desc: 'юго-запад', capital: false, story: 'Долгоруково — центр Долгоруковского района. Название связано с княжеским родом Долгоруковых. Село с характером и чувством собственного достоинства.' },
+            { name: 'Хлевное', emoji: '🏡', desc: 'юг', capital: false, story: 'Хлевное — центр Хлевенского района. Название пошло от слова "хлев" — когда-то здесь было много скота. Сегодня это спокойное село, где любят порядок и традиции.' },
+            { name: 'Добринка', emoji: '🏡', desc: 'юго-восток', capital: false, story: 'Добринка — центр Добринского района. Название связано с добрыми людьми, которые здесь живут. Село славится своей сельскохозяйственной продукцией.' },
+            { name: 'Волово', emoji: '🏡', desc: 'запад', capital: false, story: 'Волово — центр Воловского района. Село граничит с Орловской областью. Местные говорят, что у них самый лучший хлеб и самые тёплые люди.' },
+            { name: 'Становое', emoji: '🏡', desc: 'северо-запад', capital: false, story: 'Становое — центр Становлянского района. Спокойное село с богатой историей. Здесь любят говорить: "У нас как в сказке — тихо и красиво".' },
+            { name: 'Лев-Толстой', emoji: '📚', desc: 'имение Толстого', capital: false, story: 'Посёлок Лев-Толстой — место, где находится музей-усадьба великого русского писателя. Именно здесь Лев Николаевич работал над романом "Анна Каренина". Местные говорят, что дух писателя до сих пор витает над усадьбой.' }
         ];
 
         function renderCities() {
@@ -1550,23 +1896,16 @@
                 const card = document.createElement('div');
                 card.className = 'city-card' + (city.capital ? ' capital' : '');
 
-                const imgSrc = city.img;
-                const imgHtml = `
-                            <img src="${imgSrc}" alt="${city.name}" 
-                                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'no-image\\'><span class=\\'city-emoji-big\\'>${city.emoji}</span>фото нет, но <br>я старался :)</div>';">
-                        `;
+                const storyPreview = city.story.slice(0, 60) + (city.story.length > 60 ? '...' : '');
 
                 card.innerHTML = `
-                            <div class="city-image">
-                                ${imgHtml}
-                            </div>
-                            <div class="city-info">
-                                <div class="city-name"><span class="city-emoji">${city.emoji}</span>${city.name}</div>
-                                <div class="city-desc">${city.desc}</div>
-                            </div>
+                            <div class="city-emoji-big">${city.emoji}</div>
+                            <div class="city-name">${city.name}</div>
+                            <div class="city-desc">${city.desc}</div>
+                            <div class="city-story-preview">${storyPreview}</div>
                         `;
 
-                card.addEventListener('click', () => openModal(city));
+                card.addEventListener('click', () => openCityModal(city));
                 grid.appendChild(card);
             });
         }
@@ -1574,19 +1913,12 @@
         // ============================================================
         //  4. МОДАЛКА ДЛЯ ГОРОДОВ
         // ============================================================
-        function openModal(city) {
-            document.getElementById('modalBadge').textContent = city.capital ? '⭐ СТОЛИЦА' : '🏙️ ГОРОД';
+        function openCityModal(city) {
+            document.getElementById('modalEmoji').textContent = city.emoji;
             document.getElementById('modalTitle').textContent = city.name;
             document.getElementById('modalSub').textContent = city.desc;
-            document.getElementById('modalDesc').textContent = city.fullDesc;
-
-            const imgContainer = document.getElementById('modalImage');
-            const imgSrc = city.img;
-
-            imgContainer.innerHTML = `
-                        <img src="${imgSrc}" alt="${city.name}" 
-                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'no-image\\'><span>${city.emoji}</span>фото нет, но <br>я старался :)</div>';">
-                    `;
+            document.getElementById('modalBadge').textContent = city.capital ? '⭐ СТОЛИЦА' : '🏙️ ГОРОД';
+            document.getElementById('modalStory').textContent = city.story;
 
             document.getElementById('cityModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1601,7 +1933,136 @@
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
         // ============================================================
-        //  5. МОДАЛКА ДЛЯ ФАКТОВ
+        //  5. МОДАЛКА ДЛЯ "ЧЕМ ГОРДИТСЯ ОБЛАСТЬ"
+        // ============================================================
+        const PRIDE_DATA = {
+            1: {
+                name: 'Металлургия — сердце региона',
+                emoji: '🏭',
+                desc: 'Главная промышленная сила Липецкой области',
+                story: 'Новолипецкий металлургический комбинат (НЛМК) — один из крупнейших металлургических заводов в мире. Он производит сталь, которая используется в строительстве, машиностроении и даже в космической отрасли! НЛМК — это не просто завод, это целый город в городе, который кормит тысячи семей и делает Липецк известным во всём мире. Говорят, что сталь, произведённая в Липецке, идёт на строительство мостов и небоскрёбов по всей России.'
+            },
+            2: {
+                name: 'Особая экономическая зона «Липецк»',
+                emoji: '⚡',
+                desc: 'Один из самых успешных инвестиционных проектов в России',
+                story: 'Особая экономическая зона промышленно-производственного типа «Липецк» — это территория, где работают десятки предприятий из разных стран. Здесь производят всё: от автозапчастей до бытовой техники. ОЭЗ даёт рабочие места тысячам людей и привлекает инвестиции в регион. Местные шутят, что если хочешь найти работу — иди в ОЭЗ, там точно не пропадёшь!'
+            },
+            3: {
+                name: 'Елецкие кружева',
+                emoji: '🧵',
+                desc: 'Народный промысел с мировой известностью',
+                story: 'Елецкие кружева — это уникальный народный промысел, который зародился в Ельце ещё в XVIII веке. Елецкие кружевницы создают тончайшие узоры, которые ценятся во всём мире. Кружева из Ельца можно найти в музеях и частных коллекциях по всей Европе. Говорят, что каждая кружевница вкладывает в своё изделие частичку души, поэтому они такие нежные и красивые. В Ельце до сих пор работают школы кружевоплетения, где учат этому искусству молодых мастериц.'
+            },
+            4: {
+                name: 'Сахарная свекла',
+                emoji: '🌱',
+                desc: 'Липецкая область — один из лидеров по производству сахарной свеклы в России',
+                story: 'Липецкая область — это не только металл, но и сладкая жизнь! Регион входит в топ-5 в России по выращиванию сахарной свеклы. Ежегодно здесь собирают сотни тысяч тонн сладкого корня, из которого делают сахар для всей страны. Сахарные заводы области работают круглосуточно в сезон, чтобы обеспечить нас сладостью. Местные говорят, что липецкий сахар — самый белый и сладкий в России!'
+            },
+            5: {
+                name: 'Минеральные воды Липецка',
+                emoji: '💧',
+                desc: 'Курорт «Липецк» — здравница с вековой историей',
+                story: 'Липецк известен своими минеральными водами с XVII века. Ещё при Петре I здесь открыли целебные источники, а в XIX веке был основан курорт «Липецк». Минеральная вода помогает лечить болезни суставов, желудка и нервной системы. Сюда приезжают туристы со всей России, чтобы попить водички и поправить здоровье. Говорят, что Пётр I сам пил липецкую воду и хвалил её вкус!'
+            }
+        };
+
+        function openPrideModal(id) {
+            const item = PRIDE_DATA[id];
+            if (!item) return;
+
+            document.getElementById('prideModalEmoji').textContent = item.emoji;
+            document.getElementById('prideModalTitle').textContent = item.name;
+            document.getElementById('prideModalSub').textContent = item.desc;
+            document.getElementById('prideModalBadge').textContent = '🏆 ГОРДОСТЬ ОБЛАСТИ';
+            document.getElementById('prideModalStory').textContent = item.story;
+
+            document.getElementById('prideModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePrideModal() {
+            document.getElementById('prideModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('prideModal').addEventListener('click', e => { if (e.target === e.currentTarget) closePrideModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closePrideModal(); });
+
+        // ============================================================
+        //  6. МОДАЛКА ДЛЯ ТОП-5
+        // ============================================================
+        const PLACES = {
+            1: {
+                name: 'Кудыкина гора',
+                emoji: '🏛️',
+                desc: 'Легендарное место силы',
+                story: 'Кудыкина гора — одно из самых загадочных мест Липецкой области. По легендам, здесь стоял лагерь Степана Разина, а местные жители до сих пор рассказывают, что по ночам на горе слышны разбойничьи песни. Археологи находят здесь древние артефакты, а туристы приезжают ради потрясающего вида на Дон. Говорят, что если загадать желание на вершине, оно обязательно сбудется!',
+                visitors: '👥 ~1,5 млн человек в год',
+                rating: '⭐ 5/5 — Легендарное место!'
+            },
+            2: {
+                name: 'Задонский монастырь',
+                emoji: '⛪',
+                desc: 'Духовная жемчужина',
+                story: 'Задонский Рождество-Богородицкий монастырь — главный духовный центр Липецкой области. Основан в XVII веке, здесь покоятся мощи святителя Тихона Задонского. Монастырь пережил революцию, войны и возродился вновь. Это место притягивает паломников со всей России. Говорят, что здесь можно обрести душевный покой и ответы на важные вопросы.',
+                visitors: '👥 ~300 000 паломников в год',
+                rating: '⭐ 5/5 — Место силы!'
+            },
+            3: {
+                name: 'Усманский бор',
+                emoji: '🌲',
+                desc: 'Реликтовый лес',
+                story: 'Усманский бор — уникальный лесной массив, где растут сосны возрастом более 200 лет. Это реликтовый лес, который помнит времена, когда мамонты ещё ходили по Земле. Здесь можно встретить редкие виды растений и животных. Экотропы, тишина и чистый воздух — идеальное место для прогулок и медитации.',
+                visitors: '👥 ~30 000 человек в год',
+                rating: '⭐ 5/5 — Природное чудо!'
+            },
+            4: {
+                name: 'Галичья гора',
+                emoji: '🏞️',
+                desc: 'Заповедник с историей',
+                story: 'Галичья гора — это уникальный заповедник, который называют "памятником природы". Здесь растут растения, которые пережили ледниковый период и не встречаются больше нигде в России. Местные легенды гласят, что здесь когда-то жили древние люди, а по ночам можно увидеть призраков прошлого. Научная ценность этого места огромна.',
+                visitors: '👥 ~10 000 человек в год',
+                rating: '⭐ 4.5/5 — Уникальная природа!'
+            },
+            5: {
+                name: 'Музей-усадьба Л.Н. Толстого',
+                emoji: '📚',
+                desc: 'Литературное наследие',
+                story: 'В посёлке Лев-Толстой находится усадьба, где великий русский писатель Лев Николаевич Толстой работал над романом "Анна Каренина". Усадьба сохранила дух того времени: старые деревья, тихие аллеи и атмосфера творчества. Здесь можно узнать, как жил и работал гений русской литературы.',
+                visitors: '👥 ~250 000 человек в год',
+                rating: '⭐ 4.5/5 — Для любителей литературы!'
+            }
+        };
+
+        function openPlaceModal(id) {
+            const place = PLACES[id];
+            if (!place) return;
+
+            document.getElementById('placeModalEmoji').textContent = place.emoji;
+            document.getElementById('placeModalTitle').textContent = place.name;
+            document.getElementById('placeModalSub').textContent = place.desc;
+            document.getElementById('placeModalBadge').textContent = `🏆 МЕСТО #${id} В ТОП-5`;
+            document.getElementById('placeModalStory').textContent = place.story;
+            document.getElementById('placeModalVisitors').textContent = place.visitors;
+            document.getElementById('placeModalRating').textContent = place.rating;
+            document.getElementById('placeModalSource').textContent = '📊 данные от Алисы AI';
+
+            document.getElementById('placeModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePlaceModal() {
+            document.getElementById('placeModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('placeModal').addEventListener('click', e => { if (e.target === e.currentTarget) closePlaceModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closePlaceModal(); });
+
+        // ============================================================
+        //  7. МОДАЛКА ДЛЯ ФАКТОВ
         // ============================================================
         function openFactModal(emoji, number, label, description) {
             document.getElementById('factModalEmoji').textContent = emoji;
@@ -1621,7 +2082,7 @@
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFactModal(); });
 
         // ============================================================
-        //  6. КАРТА
+        //  8. КАРТА
         // ============================================================
         let mapInitialized = false;
 
@@ -1638,7 +2099,6 @@
 
             L.control.scale({ position: 'bottomright', metric: true, imperial: false }).addTo(map);
 
-            // Компас
             L.Control.extend({
                 options: { position: 'topright' },
                 onAdd: () => {
@@ -1657,7 +2117,6 @@
                 }
             }).addTo(map);
 
-            // Города на карте
             const cityCoords = [
                 { name: 'Липецк', lat: 52.61, lng: 39.60, capital: true },
                 { name: 'Елец', lat: 52.62, lng: 38.50, capital: false },
@@ -1703,7 +2162,6 @@
                     this.openPopup();
                 });
 
-                // Подпись
                 const label = L.divIcon({
                     html: `<div style="
                                 color: #fff;
@@ -1728,7 +2186,6 @@
                     .addTo(map);
             });
 
-            // Районы
             const districtIds = [
                 { id: 150116, name: 'Липецкий район' },
                 { id: 150117, name: 'Елецкий район' },
@@ -1796,7 +2253,6 @@
                     }).catch(() => {});
             });
 
-            // Граница области — КРАСНАЯ!
             fetch('https://overpass-api.de/api/interpreter?data=[out:json];(relation(79975););out%20body;>;out%20skel%20qt;')
                 .then(r => r.json())
                 .then(data => {
@@ -1823,7 +2279,6 @@
                     }
                 }).catch(() => {});
 
-            // Реки
             [
                 [
                     [53.35, 39.05],
@@ -1838,7 +2293,6 @@
                 L.polyline(r, { color: '#4a8aaa', weight: 4, opacity: 0.5 }).addTo(map);
             });
 
-            // Соседние регионы
             [
                 { name: 'Рязанская обл.', lat: 53.60, lng: 40.00 },
                 { name: 'Тамбовская обл.', lat: 52.30, lng: 41.50 },
@@ -1863,7 +2317,7 @@
         }
 
         // ============================================================
-        //  7. ЗАПУСК
+        //  9. ЗАПУСК
         // ============================================================
         renderCities();
         loadQuiz(0);
@@ -1880,9 +2334,11 @@
         }, 1000);
 
         console.log('🏛️ Сайт Липецкой области загружен!');
-        console.log('📸 Фото городов загружаются из папки images/');
+        console.log('📖 Города с историей!');
+        console.log('🏆 ТОП-5 достопримечательностей с посещаемостью!');
+        console.log('🏭 Добавлена страница "Чем гордится область"!');
+        console.log('📊 Данные от Алисы AI!');
         console.log('🟣 Неоновая обводка активна!');
-        console.log('🎬 Приветственная шапка работает!');
     </script>
 
 </body>
